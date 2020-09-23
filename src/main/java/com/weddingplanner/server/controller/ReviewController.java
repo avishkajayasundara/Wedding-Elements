@@ -41,4 +41,10 @@ public class ReviewController {
         mv.addObject("reviews", reviewService.listReviewByAdvertisement(review.getAdvertisementId()));
         return mv;
     }
+    //@PreAuthorize("hasAnyAuthority('CUSTOMER')")
+    @GetMapping("admin/delete-review")
+    public void deleteReview(String reviewId){
+       reviewService.deleteReview(reviewId);
+
+    }
 }

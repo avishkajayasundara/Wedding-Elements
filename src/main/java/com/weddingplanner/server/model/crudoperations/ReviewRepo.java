@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ReviewRepo extends CrudRepository<Review,String> {
     List<Review> findByAdvertisementId(String advertisementId);
+    List<Review> findByEmail(String email);
 }

@@ -41,14 +41,14 @@
             color: #eeeeee;
             text-align: center;
             line-height: 70px;
-            background: #AA00FF;
+            background: #202833;
             user-select: none;
         }
 
         h3 {
             color: #000000;
             font-weight: 400;
-            font-size: 21px;
+            font-size: 18px;
         }
 
         body {
@@ -67,7 +67,7 @@
             left: 0;
             width: 250px;
             height: 100%;
-            background: #4A148C;
+            background: #202833;
             margin-top: 0%;
         }
 
@@ -76,7 +76,7 @@
             color: #eeeeee;
             text-align: center;
             line-height: 70px;
-            background: #AA00FF;
+            background: #106466;
             user-select: none;
         }
 
@@ -104,78 +104,97 @@
 
     </style>
 </head>
-<body id="advertisementspage" style="background-color: #E0E0E0" data-spy="scroll" data-target="#pb-navbar"
+<body id="advertisementspage" style="background-color: #222222" data-spy="scroll" data-target="#pb-navbar"
       data-offset="200">
 
 <div class="sidebar">
-    <header>FUCK THIS</header>
+    <header>Admin Panel</header>
     <ul>
-        <li><a href="#"><i class="fas fa-satellite"></i> DASHBOARD</a></li>
-        <li><a href="#"><i class="fab fa-sass"></i> FUCK</a></li>
-        <li><a href="#"><i class="fas fa-battery-full"></i> OFF</a></li>
-        <li><a href="#"><i class="fas fa-bell"></i> MATE</a></li>
-        <li><a href="#"><i class="fas fa-birthday-cake"></i> AVISHKA</a></li>
+        <li><a href="#"> DASHBOARD</a></li>
+        <li><a href="/admin/business-owners"> Business Owners </a></li>
+        <li><a href="/admin/customers"> Customers </a></li>
+        <li><a href="#"> Inquiries </a></li>
+        <li><a href="/logout"> Logout </a></li>
     </ul>
 </div>
 
 <div class="boxTop">
-    LOL PUT A TOPIC
+    User Profile - ${customer.getFirstName()} ${customer.getLastName()}
 </div>
 
 
 <div>
     <div class="box" style="margin-top: 5%">
-        <div>
-            <h1 style="text-align: center; color: #1A237E; font-weight: 500">User Profile</h1>
+        <div class="container">
+            <div class="row">
+                <div style="width: 40%" class="col-sm">
+                    <h2 style="color: #0b0b0b; margin-bottom: 20px">Account Information</h2>
+                    <h3 style="font-weight: 400">
+                        First Name - ${customer.getFirstName()}
+                    </h3>
+                    <h3 style="margin-top: 2%">
+                        Last Name - ${customer.getLastName()}
+                    </h3>
+                    <h3 style="margin-top: 2%">
+                        ContactNumber - ${customer.getContactNo()}
+                    </h3>
+                    <h3 style="margin-top: 2%">
+                        Email - ${customer.getEmail()}
+                    </h3>
+                    <h3 style="margin-top: 2%">
+                        Address - ${customer.getAddress()}
+                    </h3>
+                    <h3 style="margin-top: 2%">
+                        Date Of Birth - ${customer.getDob()}
+                    </h3>
+                    <c:set var="status" value="${customer.getStatus()}"/>
+                    <c:choose>
+                        <c:when test="${status == 'ACTIVE'}">
+                            <c:url value="/admin/customers/update-status" var="url">
+                                <c:param name="email" value="${customer.getEmail()}"/>
+                                <c:param name="status" value="DISABLE"/>
+                            </c:url>
+                            <div >
+                                <br>
+                                <button style="background-color: #B71C1C; color: #eeeeee; font-weight: 500; width: 60%"
+                                        onclick="window.location.href='${url}'">Deactivate Account
+                                </button>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <c:url value="/admin/customers/update-status" var="url">
+                                <c:param name="status" value="ACTIVE"/>
+                                <c:param name="email" value="${customer.getEmail()}"/>
+                            </c:url>
+                            <%--            <a href="${url}">Activate Account</a>--%>
+                            <div>
+                                <br>
+                                <button style="background-color: #00695C; color: #eeeeee; font-weight: 500; width: 60%"
+                                        onclick="window.location.href='${url}'">Activate Account
+                                </button>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                <div class="col-sm">
+                    <h2 style="color: #0b0b0b; margin-bottom: 20px">Posted Reviews</h2>
+                    <c:forEach var="review" items="${reviews}">
+                        <c:url value="/admin/delete-review" var="url">
+                            <c:param name="reviewId" value="${review.getReviewId()}"/>
+                        </c:url>
+                        <div>
+                            <p style="color: #0b0b0b">Advertisement Id - ${review.getAdvertisementId()}</p>
+                            <p style="color: #0b0b0b"> ${review.getReview()}</p>
+                            <button style="background-color:red; color: #eeeeee; font-weight: 500; width: 60%"
+                                    onclick="window.location.href='${url}'">
+                                Remove</button>
+                        </div>
+                    </c:forEach>
+                </div>
+
+            </div>
         </div>
-        <br>
-        <h3 style="font-weight: 400">
-            First Name - ${customer.getFirstName()}
-        </h3>
-        <h3 style="margin-top: 2%">
-            Last Name - ${customer.getLastName()}
-        </h3>
-        <h3 style="margin-top: 2%">
-            ContactNumber - ${customer.getContactNo()}
-        </h3>
-        <h3 style="margin-top: 2%">
-            Email - ${customer.getEmail()}
-        </h3>
-        <h3 style="margin-top: 2%">
-            Address - ${customer.getAddress()}
-        </h3>
-        <h3 style="margin-top: 2%">
-            Date Of Birth - ${customer.getDob()}
-        </h3>
-        <c:set var="status" value="${customer.getStatus()}"/>
-        <c:choose>
-            <c:when test="${status == 'ACTIVE'}">
-                <c:url value="/admin/customers/update-status" var="url">
-                    <c:param name="email" value="${customer.getEmail()}"/>
-                    <c:param name="status" value="DISABLE"/>
-                </c:url>
-                <%--        <a style="color: #000000 " href="${url}">Deactivate Account</a>--%>
-                <div style="margin-left: 70%">
-                    <br>
-                    <button style="background-color: #B71C1C; color: #eeeeee; font-weight: 500; width: 100%"
-                            onclick="window.location.href='${url}'">Deactivate Account
-                    </button>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <c:url value="/admin/customers/update-status" var="url">
-                    <c:param name="status" value="ACTIVE"/>
-                    <c:param name="email" value="${customer.getEmail()}"/>
-                </c:url>
-                <%--            <a href="${url}">Activate Account</a>--%>
-                <div style="margin-left: 70%">
-                    <br>
-                    <button style="background-color: #00695C; color: #eeeeee; font-weight: 500; width: 100%"
-                            onclick="window.location.href='${url}'">Activate Account
-                    </button>
-                </div>
-            </c:otherwise>
-        </c:choose>
+
     </div>
 </div>
 

@@ -72,7 +72,7 @@
                 </div>
                 <div class="text-center p-t-90">
                     <a class="txt1" href="#">
-                        <p style="margin-top: -17%">Don't Have an Account? <a href="#" style="color: #84FFFF">Register</a><a href="#" style="color: #84FFFF; margin-left: 4% ">Register Your Business</a>.</p>
+                        <p style="margin-top: -17%">Don't Have an Account? <a href="/newCustomer" style="color: #84FFFF">Register</a><a href="/newBusiness" style="color: #84FFFF; margin-left: 4% ">Register Your Business</a>.</p>
                     </a>
                 </div>
 <%--                <div class="text-center p-t-90">--%>

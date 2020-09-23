@@ -4,6 +4,7 @@ import com.weddingplanner.server.model.BusinessOwner;
 import com.weddingplanner.server.model.Customer;
 import com.weddingplanner.server.model.MyUserDetails;
 import com.weddingplanner.server.services.AdvertisementService;
+import com.weddingplanner.server.services.ReviewService;
 import com.weddingplanner.server.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +22,9 @@ public class UserController {
 
     @Autowired
     AdvertisementService advertisementService;
+
+    @Autowired
+    ReviewService reviewService;
 
     @GetMapping("newBusiness")
     public ModelAndView newBusiness() {
@@ -86,6 +90,7 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("view_customer.jsp");
         modelAndView.addObject("customer", userService.getCustomer(email));
+        modelAndView.addObject("reviews", reviewService.listReviewsByUser(email));
         return modelAndView;
     }
 

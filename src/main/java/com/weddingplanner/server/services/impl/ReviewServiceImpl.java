@@ -33,11 +33,16 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<Review> listReviewsByUser(String email) {
-        return null;
+        return reviewRepo.findByEmail(email);
     }
 
     @Override
     public List<Review> listReviewByAdvertisement(String advertisementId) {
         return reviewRepo.findByAdvertisementId(advertisementId);
+    }
+
+    @Override
+    public void deleteReview(String reviewId) {
+        reviewRepo.deleteById(reviewId);
     }
 }

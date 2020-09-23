@@ -137,7 +137,7 @@ body {
   color: #222;
   font-weight: 400;
   font-family: 'Montserrat';
-  background-image: url(https://images.pexels.com/photos/1024975/pexels-photo-1024975.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-image: url(https://images.unsplash.com/photo-1483042673779-b26883c2100f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80);
   background-repeat: no-repeat;
   background-size: cover;
   -moz-background-size: cover;
@@ -265,11 +265,20 @@ body {
   color: #fff;
   text-transform: uppercase;
   border: none;
-  background-image: -moz-linear-gradient(to left, #74ebd5, #9face6);
+  background: #9152f8;
+  background-image: -moz-linear-gradient(to left, #0b0b0b, #b224ef);
   background-image: -ms-linear-gradient(to left, #74ebd5, #9face6);
-  background-image: -o-linear-gradient(to left, #74ebd5, #9face6);
+  background-image: -o-linear-gradient(to left, #0b0b0b, #b224ef);
   background-image: -webkit-linear-gradient(to left, #74ebd5, #9face6);
-  background-image: linear-gradient(to left, #74ebd5, #9face6); }
+  background-image: linear-gradient(to left, #0b0b0b, #b224ef); }
+
+#submit{
+  background: #9152f8;
+  background: -webkit-linear-gradient(bottom, #0b0b0b, #b224ef);
+  background: -o-linear-gradient(bottom, #0b0b0b, #b224ef);
+  background: -moz-linear-gradient(bottom, #0b0b0b, #b224ef);
+  background: linear-gradient(bottom, #0b0b0b, #b224ef);
+}
 
 input[type=checkbox]:not(old) {
   width: 2em;

@@ -37,18 +37,19 @@
 
         <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-portfolio">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="#section-resume">Advertisements</a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/advertisements" />">Advertisements</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-contact">Contact Us</a></li>
+
                 <c:set var="user" value="${user}"/>
                 <c:choose>
                     <c:when test="${user != null}">
-                        <li class="nav-item"><a class="nav-link" href="login.jsp">Logged in
+                        <li class="nav-item"><a class="nav-link" href="#section-contact">Logged in
                             as ${user}</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li class="nav-item"><a class="nav-link" href="/myaccount">Login/SignUp</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login.jsp">Login/SignUp</a></li>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -96,225 +97,9 @@
     </div>
 </section>
 <!-- .section -->
-<section class="site-section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <div class="section-heading text-center">
-                    <h2>Client <strong>Testimonial</strong></h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-
-                <div class="block-47 d-flex mb-5">
-                    <div class="block-47-image">
-                        <img src="../images/person_1.jpg" alt="Image placeholder" class="img-fluid">
-                    </div>
-                    <blockquote class="block-47-quote">
-                        <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and
-                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
-                            coast of the Semantics, a large language ocean.&rdquo;</p>
-                        <cite class="block-47-quote-author">&mdash; Ethan McCown, CEO <a href="#">XYZ Inc.</a></cite>
-                    </blockquote>
-                </div>
-
-            </div>
-            <div class="col-md-6">
-
-                <div class="block-47 d-flex mb-5">
-                    <div class="block-47-image">
-                        <img src="../images/person_2.jpg" alt="Image placeholder" class="img-fluid">
-                    </div>
-                    <blockquote class="block-47-quote">
-                        <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and
-                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
-                            coast of the Semantics, a large language ocean.&rdquo;</p>
-                        <cite class="block-47-quote-author">&mdash; Craig Gowen, CEO <a href="#">XYZ Inc.</a></cite>
-                    </blockquote>
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="block-47 d-flex mb-5">
-                    <div class="block-47-image">
-                        <img src="../images/person_3.jpg" alt="Image placeholder" class="img-fluid">
-                    </div>
-                    <blockquote class="block-47-quote">
-                        <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and
-                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
-                            coast of the Semantics, a large language ocean.&rdquo;</p>
-                        <cite class="block-47-quote-author">&mdash; Ethan McCown, CEO <a href="#">XYZ Inc.</a></cite>
-                    </blockquote>
-                </div>
-
-            </div>
-            <div class="col-md-6">
-
-                <div class="block-47 d-flex mb-5">
-                    <div class="block-47-image">
-                        <img src="../images/person_4.jpg" alt="Image placeholder" class="img-fluid">
-                    </div>
-                    <blockquote class="block-47-quote">
-                        <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and
-                            Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
-                            coast of the Semantics, a large language ocean.&rdquo;</p>
-                        <cite class="block-47-quote-author">&mdash; Craig Gowen, CEO <a href="#">XYZ Inc.</a></cite>
-                    </blockquote>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section class="site-section" id="section-blog">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-5">
-                <div class="section-heading text-center">
-                    <h2>Blog on <strong>Medium</strong></h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="blog-entry">
-                    <a href="#"><img src="../images/post_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                    <div class="blog-entry-text">
-                        <h3><a href="#">Creative Product Designer From Facebook</a></h3>
-                        <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an
-                            almost unorthographic.</p>
-
-                        <div class="meta">
-                            <a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
-                            <a href="#"><span class="icon-bubble"></span> 5 Comments</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="blog-entry">
-                    <a href="#"><img src="../images/post_2.jpg" alt="Image placeholder" class="img-fluid"></a>
-                    <div class="blog-entry-text">
-                        <h3><a href="#">Creative Product Designer From Facebook</a></h3>
-                        <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an
-                            almost unorthographic.</p>
-
-                        <div class="meta">
-                            <a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
-                            <a href="#"><span class="icon-bubble"></span> 5 Comments</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="blog-entry">
-                    <a href="#"><img src="../images/post_3.jpg" alt="Image placeholder" class="img-fluid"></a>
-                    <div class="blog-entry-text">
-                        <h3><a href="#">Creative Product Designer From Facebook</a></h3>
-                        <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an
-                            almost unorthographic.</p>
-
-                        <div class="meta">
-                            <a href="#"><span class="icon-calendar"></span> Aug 7, 2018</a>
-                            <a href="#"><span class="icon-bubble"></span> 5 Comments</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section class="site-section" id="section-contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-5">
-                <div class="section-heading text-center">
-                    <h2>Get <strong>In Touch</strong></h2>
-                </div>
-            </div>
-
-            <div class="col-md-7 mb-5 mb-md-0">
-                <form action="newInquiry" class="site-form">
-                    <h3 class="mb-5">Get In Touch</h3>
-                    <div class="form-group">
-                        String inquiryId, String name, String email, String contactNo, String subject, String message
-                        <input name="name" id="name" type="text" class="form-control px-3 py-4" placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <input name="email" id="email" type="email" class="form-control px-3 py-4"
-                               placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <input name="contactNo" id="contactNo" type="number" maxlength="10" minlength="10"
-                               class="form-control px-3 py-4" placeholder="Your Phone">
-                    </div>
-                    <div class="form-group">
-                        <input name="subject" id="subject" type="text" class="form-control px-3 py-4"
-                               placeholder="Subject">
-                    </div>
-                    <div class="form-group mb-5">
-                        <textarea name="message" id="message" class="form-control px-3 py-4" cols="30" rows="10"
-                                  placeholder="Write a Message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary  px-4 py-3" value="Send Message">
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-5 pl-md-5">
-                <h3 class="mb-5">Our Contact Details</h3>
-                <ul class="site-contact-details">
-                    <li>
-                        <span class="text-uppercase">Email</span>
-                        site@gmail.com
-                    </li>
-                    <li>
-                        <span class="text-uppercase">Phone</span>
-                        +30 976 1382 9921
-                    </li>
-                    <li>
-                        <span class="text-uppercase">Fax</span>
-                        +30 976 1382 9922
-                    </li>
-                    <li>
-                        <span class="text-uppercase">Address</span>
-                        Nawala, Colombo <br>
-                        4th Floor8 Lower <br>
-                        Narahenpita Road, M1 50F
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 <footer class="site-footer">
     <div class="container">
-
-        <div class="row mb-5">
-            <p class="col-12 text-center">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script>
-                All rights reserved | This template is made with <i class="icon-heart text-danger"
-                                                                    aria-hidden="true"></i> by <a
-                    href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-        </div>
-
         <div class="row mb-5">
             <div class="col-md-12 text-center">
                 <p>

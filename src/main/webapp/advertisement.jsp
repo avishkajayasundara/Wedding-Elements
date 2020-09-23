@@ -39,19 +39,17 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-portfolio">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="${contextPath}/advertisements">Advertisements</a></li>
+                <li class="nav-item"><a class="nav-link" href="<c:url value="/advertisements" />">Advertisements</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-contact">Contact Us</a></li>
 
                 <c:set var="user" value="${user}"/>
                 <c:choose>
                     <c:when test="${user != null}">
-                        <li class="nav-item"><a class="nav-link" href="/login">Logged in
+                        <li class="nav-item"><a class="nav-link" href="#section-contact">Logged in
                             as ${user}</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${contextPath}/login.jsp">Login/SignUp</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/login.jsp">Login/SignUp</a></li>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -157,18 +155,6 @@
 <footer class="site-footer">
     <div class="container">
         <div class="row mb-5">
-            <p class="col-12 text-center">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script>document.write(new Date().getFullYear());</script>
-                All rights reserved | This template is made with <i class="icon-heart text-danger"
-                                                                    aria-hidden="true"></i> by <a
-                    href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-        </div>
-
-        <div class="row mb-5">
             <div class="col-md-12 text-center">
                 <p>
                     <a href="#" class="social-item"><span class="icon-facebook2"></span></a>
@@ -182,7 +168,6 @@
 
     </div>
 </footer>
-
 
 <script src="../js/vendor/jquery.min.js"></script>
 <script src="../js/vendor/jquery-migrate-3.0.1.min.js"></script>

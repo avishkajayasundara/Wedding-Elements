@@ -11,5 +11,5 @@ public interface ReviewService {
     Review getReview(String reviewId);
     List<Review> listReviewsByUser(String email);
     List<Review> listReviewByAdvertisement(String advertisementId);
-
+    void deleteReview(String reviewId);
 }

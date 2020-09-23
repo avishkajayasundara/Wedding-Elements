@@ -28,8 +28,103 @@
     <link rel="stylesheet" type="text/css" href="../css/tableutil.css">
     <link rel="stylesheet" type="text/css" href="../css/tablemain.css">
     <!--===============================================================================================-->
+    <style>
+        .box {
+            background-color: #ffffff;
+            width: 60%;
+            margin-left: 400px ;
+            padding: 50px;
+            /*margin: auto;*/
+        }
+
+        .boxTop {
+            width: 81%;
+            height: 71.5px;
+            margin-top: 0%;
+            margin-left: 252px;
+            font-size: 22px;
+            color: #eeeeee;
+            text-align: center;
+            line-height: 70px;
+            background: #202833;
+            user-select: none;
+        }
+
+        h3 {
+            color: #000000;
+            font-weight: 400;
+            font-size: 21px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background: #202833;
+            margin-top: 0%;
+        }
+
+        .sidebar header {
+            font-size: 22px;
+            color: #eeeeee;
+            text-align: center;
+            line-height: 70px;
+            background: #106466;
+            user-select: none;
+        }
+
+        .sidebar ul a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            line-height: 65px;
+            font-size: 20px;
+            color: white;
+            padding-left: 40px;
+            box-sizing: border-box;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            border-bottom: 1px solid black;
+            transition: .4s;
+        }
+
+        ul li:hover a {
+            padding-left: 60px;
+        }
+
+        ul li:hover a i {
+            margin-right: 8px;
+        }
+
+    </style>
 </head>
 <body style="background-color:#263238" >
+
+<div class="sidebar">
+    <header>Admin Panel</header>
+    <ul>
+        <li><a href="#"><i ></i>DASHBOARD</a></li>
+        <li><a href="/admin/business-owners"><i class="fab fa-sass"></i> Business Owners </a></li>
+        <li><a href="/admin/customers"><i class="fas fa-battery-full"></i> Registered Customers </a></li>
+        <li><a href="#"><i class="fas fa-bell"></i> Inquiries </a></li>
+        <li><a href="/logout"><i class="fas fa-birthday-cake"></i> Logout </a></li>
+    </ul>
+</div>
+
+<div class="boxTop">
+    All Customers
+</div>
 
 <div class="limiter">
     <div style="background-color: black" class="container-table100">
