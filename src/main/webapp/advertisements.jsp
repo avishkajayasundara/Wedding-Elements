@@ -39,24 +39,25 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-portfolio">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="<c:url value="/advertisements" />">Advertisements</a></li>
+                <li class="nav-item"><a class="nav-link" href="${contextPath}/advertisements">Advertisements</a></li>
                 <li class="nav-item"><a class="nav-link" href="#section-contact">Contact Us</a></li>
 
                 <c:set var="user" value="${user}"/>
                 <c:choose>
                     <c:when test="${user != null}">
-                        <li class="nav-item"><a class="nav-link" href="#section-contact">Logged in
-                            as ${user}</a></li>
+                        <li  class="nav-item"><a style="margin-left: 135%" class="nav-link" href="/user">Account</a></li>
+                        <li class="nav-item"><a style="margin-left: 135%" class="nav-link" href="/logout">Logout</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li class="nav-item"><a class="nav-link" href="/login.jsp">Login/SignUp</a></li>
+                        <li class="nav-item">
+                            <a style="margin-left: 135%" class="nav-link" href="${contextPath}/login.jsp">Login/SignUp</a>
+                        </li>
                     </c:otherwise>
                 </c:choose>
             </ul>
         </div>
     </div>
 </nav>
-
 <section class="site-section" id="section-portfolio">
     <div class="container">
         <div class="filters">

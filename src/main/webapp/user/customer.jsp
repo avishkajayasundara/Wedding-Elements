@@ -20,75 +20,157 @@
     <link rel="stylesheet" href="../../css/style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
-
+    <style>
+        .bg-modal{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            top: 0%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .modal-content{
+            width: 480px;
+            height: 400px;
+            background-color: #222222;
+            opacity: 1;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-inputs{
+            width: 400px;
+            border-radius: 10px;
+            color: #FFFFFF;
+            background-color: #222222;
+        }
+        .close{
+            position: absolute;
+            top: 0%;
+            right: 14px;
+            font-size: 42px;
+            transform: rotate(45deg);
+            cursor: pointer;
+            color: #FFFFFF;
+        }
+        .submit-btn{
+            border-radius: 10px;
+            background-color: #bac964;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
 
 </head>
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
-<h1>My Account</h1>
-<h3>
-    First Name - ${customer.getFirstName()}
-</h3>
-<h3>
-    Last Name - ${customer.getLastName()}
-</h3>
-<h3>
-    ContactNumber - ${customer.getContactNo()}
-</h3>
-<h3>
-    Email - ${customer.getEmail()}
-</h3>
-<h3>
-    Address - ${customer.getAddress()}
-</h3>
-<h3>
-    Date Of Birth - ${customer.getDob()}
-</h3>
-<section class="site-section" id="section-contact">
+<nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
+
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-5">
-                <div class="section-heading text-center">
-                    <h2><strong>My Account</strong></h2>
-                    <br>
-                </div>
-            </div>
-            <div class="col-md-7 mb-5 mb-md-0">
-                <form action="newInquiry" class="site-form">
-                    <div class="form-group">
-                        <label>First Name</label>
-                        <input name="name" disabled="disabled" type="text" class="form-control px-3 py-4" value="${customer.getFirstName()}">
-                    </div>
-                    <div class="form-group">
-                        <input name="email" id="email" type="email" class="form-control px-3 py-4"
-                               placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <input name="contactNo" id="contactNo" type="number" maxlength="10" minlength="10"
-                               class="form-control px-3 py-4" placeholder="Your Phone">
-                    </div>
-                    <div class="form-group">
-                        <input name="subject" id="subject" type="text" class="form-control px-3 py-4"
-                               placeholder="Subject">
-                    </div>
-                    <div class="form-group mb-5">
-                        <textarea name="message" id="message" class="form-control px-3 py-4" cols="30" rows="10"
-                                  placeholder="Write a Message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary  px-4 py-3" value="Send Message">
-                    </div>
-                </form>
-            </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
+                aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#section-portfolio">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="${contextPath}/advertisements">Advertisements</a></li>
+                <li class="nav-item"><a class="nav-link" href="#section-contact">Contact Us</a></li>
+
+                <c:set var="user" value="${user}"/>
+                <c:choose>
+                    <c:when test="${user != null}">
+                        <li  class="nav-item"><a style="margin-left: 135%" class="nav-link" href="/user">Account</a></li>
+                        <li class="nav-item"><a style="margin-left: 135%" class="nav-link" href="/logout">Logout</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <a style="margin-left: 135%" class="nav-link" href="${contextPath}/login.jsp">Login/SignUp</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
         </div>
     </div>
-</section>
+</nav>
+<div style="margin-top: 200px" class="container">
+    <h1 style="margin-bottom: 100px; text-align: center">My Account</h1>
+
+    <div class="row">
+        <div style="width: 40%" class="col-sm">
+            <h2 style="margin-bottom: 20px">Account Details</h2>
+
+            <p>
+                First Name - ${customer.getFirstName()}
+            </p>
+            <p>
+                Last Name - ${customer.getLastName()}
+            </p>
+            <p>
+                ContactNumber - ${customer.getContactNo()}
+            </p>
+            <p>
+                Email - ${customer.getEmail()}
+            </p>
+            <p>
+                Address - ${customer.getAddress()}
+            </p>
+            <p>
+                Date Of Birth - ${customer.getDob()}
+            </p>
+            <div class="form-group">
+                <BUTTON type="submit" id="updateButton" class="btn btn-primary submit-btn  px-4 py-3" value="Send Message">
+                    Update Details
+                </BUTTON>
+            </div>
+        </div>
+        <div style="width: 60%" class="col-sm">
+            <h2 style="margin-bottom: 20px">Posted Reviews</h2>
+            <c:forEach var="review" items="${reviews}">
+                <div style="border-radius: 5px; border-color: #FFFFFF; border-width: 3px">
+                    <p style="margin-bottom: 10px;margin-top: 10px">Advertisement Id - ${review.getAdvertisementId()}</p>
+                    <p > ${review.getReview()}</p>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</div>
+    <!-- .Modal section -->
+    <div class="bg-modal">
+        <div class="modal-content">
+            <div class="close">+</div>
+            <h3> Update Account Details</h3>
+            <form action="/customer/update-profile" method="post">
+                <input type="hidden" value="${customer.getEmail()}" name="email">
+                <label style="margin-top: 10px">Contact Number</label><br>
+                <input class="modal-inputs" type="text" id="number" name="contactNo" value="${customer.getContactNo()}"><br>
+                <label style="margin-top: 10px">Address</label><br>
+                <input class="modal-inputs" type="text" id="bAddress" name="address" value="${customer.getAddress()}"><br>
+                <label style="margin-top: 10px">Password</label><br>
+                <input class="modal-inputs" type="password" id="password" name="password" value="${customer.getAddress()}"><br>
+                <input style="margin-top: 20px;" class="submit-btn" type="submit" value="Update Profile">
+            </form>
+        </div>
+
+    </div>
 
 
-        <c:url value = "/admin/customers/update-status" var = "url">
-            <c:param name = "email" value = "${customer.getEmail()}"/>
-        </c:url>
-        <a href="${url}">Delete Account</a>
-
+    <script>
+        document.getElementById("updateButton").addEventListener('click',function () {
+            document.querySelector('.bg-modal').style.display = "flex";
+        });
+        document.querySelector('.close').addEventListener('click',function () {
+            document.querySelector('.bg-modal').style.display = "none"
+        });
+    </script>
 <script src="../../js/vendor/jquery.min.js"></script>
 <script src="../../js/vendor/jquery-migrate-3.0.1.min.js"></script>
 <script src="../../js/vendor/popper.min.js"></script>

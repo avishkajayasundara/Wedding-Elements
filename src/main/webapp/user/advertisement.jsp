@@ -25,7 +25,6 @@
 </head>
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
-
 <nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
 
     <div class="container">
@@ -45,12 +44,12 @@
                 <c:set var="user" value="${user}"/>
                 <c:choose>
                     <c:when test="${user != null}">
-                        <li class="nav-item"><a class="nav-link" href="/login">Logged in
-                            as ${user}</a></li>
+                        <li  class="nav-item"><a style="margin-left: 135%" class="nav-link" href="/user">Account</a></li>
+                        <li class="nav-item"><a style="margin-left: 135%" class="nav-link" href="/logout">Logout</a></li>
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href="${contextPath}/login.jsp">Login/SignUp</a>
+                            <a style="margin-left: 135%" class="nav-link" href="${contextPath}/login.jsp">Login/SignUp</a>
                         </li>
                     </c:otherwise>
                 </c:choose>

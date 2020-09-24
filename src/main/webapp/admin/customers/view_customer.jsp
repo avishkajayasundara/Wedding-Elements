@@ -181,6 +181,7 @@
                     <c:forEach var="review" items="${reviews}">
                         <c:url value="/admin/delete-review" var="url">
                             <c:param name="reviewId" value="${review.getReviewId()}"/>
+                            <c:param name="email" value="${review.getEmail()}"/>
                         </c:url>
                         <div>
                             <p style="color: #0b0b0b">Advertisement Id - ${review.getAdvertisementId()}</p>

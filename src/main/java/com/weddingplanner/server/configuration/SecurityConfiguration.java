@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -32,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/business-owner/**").hasAuthority("BUSINESS_OWNER")
-                .antMatchers("/user/**").hasAuthority("CUSTOMER")
+                .antMatchers("/user/**").hasAnyAuthority("CUSTOMER,BUSINESS_OWNER")
                 .antMatchers("/admin").permitAll()
 //                .hasAuthority("ADMIN")
                 .antMatchers("/login*").permitAll()
@@ -40,7 +42,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/login")
+                .permitAll()
+//                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
                 .failureUrl("/login.jsp?error=true")
                 .permitAll()
@@ -53,5 +56,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public BCryptPasswordEncoder getBCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
     }
 }

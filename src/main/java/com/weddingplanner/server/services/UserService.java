@@ -23,4 +23,7 @@ public interface UserService {
     List<BusinessOwner> listBusinessOwners();
     void updateCustomerStatus(String status, String email);
     void updateBusinessAccountStatus(String status,String email);
+    void updateBusinessOwnerProfile(String name, String address, String contactNo, String description, String email);
+    void updateCustomerProfile(String contactNo, String address, String password, String email);
+
 }

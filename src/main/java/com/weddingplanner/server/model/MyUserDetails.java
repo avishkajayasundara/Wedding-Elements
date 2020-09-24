@@ -12,16 +12,50 @@ public class MyUserDetails implements UserDetails {
     private String email;
     private String password;
     private boolean active;
+    private String userRole;
     private List<GrantedAuthority> authorities;
 
     public void setAuthorities(List<GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
     public MyUserDetails(SystemUser user) {
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.active = true;
+        if(user.getStatus().equals("ACTIVE")){
+            this.active = true;
+        }else {
+            this.active = false;
+        }
+        this.userRole = user.getUserRole();
         this.authorities = AuthorityUtils.createAuthorityList(user.getUserRole());
         System.out.println("Reached");
     }

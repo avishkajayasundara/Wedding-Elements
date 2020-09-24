@@ -128,4 +128,14 @@ public class UserServicesImpl implements UserService {
     public void updateBusinessAccountStatus(String status,String email) {
         businessOwnerRepo.updateAccountStatus(status, email);
     }
+
+    @Override
+    public void updateBusinessOwnerProfile(String name, String address, String contactNo, String description, String email) {
+        businessOwnerRepo.updateProfileDetails(name,address,contactNo,description,email);
+    }
+
+    @Override
+    public void updateCustomerProfile(String contactNo, String address, String password, String email) {
+        customerRepo.updateProfileDetails(contactNo, address, passwordEncoder.encode(password), email);
+    }
 }

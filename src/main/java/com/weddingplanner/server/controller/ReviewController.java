@@ -36,15 +36,20 @@ public class ReviewController {
         review.setEmail(user.getUsername());
         review.setName(customer.getFirstName() + " " + customer.getLastName());
         reviewService.addReview(review);
-        mv.setViewName("advertisement.jsp");
+        mv.setViewName("/advertisement.jsp");
         mv.addObject("advertisement", advertisementService.getAdvertisement(review.getAdvertisementId()));
         mv.addObject("reviews", reviewService.listReviewByAdvertisement(review.getAdvertisementId()));
         return mv;
     }
     //@PreAuthorize("hasAnyAuthority('CUSTOMER')")
     @GetMapping("admin/delete-review")
-    public void deleteReview(String reviewId){
-       reviewService.deleteReview(reviewId);
-
+    public ModelAndView deleteReview(String reviewId, String email){
+        ModelAndView modelAndView = new ModelAndView();
+        reviewService.deleteReview(reviewId);
+        modelAndView.setViewName("/admin/customers/view_customer.jsp");
+        modelAndView.addObject("customer", userService.getCustomer(email));
+        modelAndView.addObject("reviews", reviewService.listReviewsByUser(email));
+        return modelAndView;
     }
+
 }
