@@ -37,7 +37,7 @@
             <div class="table">
                 <div class="row header">
                     <div class="cell">
-                        Business Name
+                        Businesssssss Name
                     </div>
                     <div class="cell">
                         Type

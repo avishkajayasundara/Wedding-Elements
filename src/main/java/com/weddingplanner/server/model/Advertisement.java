@@ -18,9 +18,28 @@ public class Advertisement {
     private Date publishedDate;
     private String category;
     private Double startingPrice;
+    private Float score;
+
+    public Float getScore() {
+        return score;
+    }
+
+    public void setScore(Float score) {
+        this.score = score;
+    }
+
+    public int getNumberOfReviews() {
+        return numberOfReviews;
+    }
+
+    public void setNumberOfReviews(int numberOfReviews) {
+        this.numberOfReviews = numberOfReviews;
+    }
+
+    private int numberOfReviews;
 
     public Advertisement(String advertisementId, String title, String description, String image, String businessOwner,
-                         Date publishedDate, String category, Double startingPrice) {
+                         Date publishedDate, String category, Double startingPrice,int numberOfReviews, Float score ) {
         this.advertisementId = advertisementId;
         this.title = title;
         Description = description;
@@ -29,6 +48,8 @@ public class Advertisement {
         this.publishedDate = publishedDate;
         this.category = category;
         this.startingPrice = startingPrice;
+        this.numberOfReviews = numberOfReviews;
+        this.score = score;
     }
 
     public Advertisement() {

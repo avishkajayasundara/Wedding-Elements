@@ -14,12 +14,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="..css/animate.css">
-    <link rel="stylesheet" href="../../css/flexslider.css">
-    <link rel="stylesheet" href="../../fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../../css/flexslider.css">
+    <link rel="stylesheet" href="../../../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../../css/style.css">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
+
     <style>
         .bg-modal {
             width: 100%;
@@ -35,7 +36,7 @@
 
         .modal-content {
             width: 480px;
-            height: 400px;
+            height: 600px;
             background-color: #222222;
             opacity: 1;
             border-radius: 10px;
@@ -72,7 +73,7 @@
     </style>
 
 </head>
-<body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
+<body id="advertisementspage" data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 <nav class="navbar navbar-expand-lg site-navbar navbar-light bg-light" id="pb-navbar">
 
     <div class="container">
@@ -107,81 +108,110 @@
         </div>
     </div>
 </nav>
-<div style="margin-top: 200px" class="container">
-    <h1 style="margin-bottom: 100px; text-align: center">My Account</h1>
-
+<div style="margin-top: 8%" class="container">
+    <h1 style="text-align: center; margin-bottom: 100px">My Account</h1>
     <div class="row">
-        <div style="width: 30%">
-            <%--            <div style="width: 40%" class="col-sm">--%>
-            <h2 style="margin-bottom: 20px">Account Details</h2>
+        <%--        <div style="width: 20%" class="col-sm">--%>
+        <div style="width: 25%">
+            <p>
 
-            <p>
-                First Name - ${customer.getFirstName()}
+                Name of the Business - ${business.getName()}
             </p>
             <p>
-                Last Name - ${customer.getLastName()}
+                Email - ${business.getEmail()}
             </p>
             <p>
-                ContactNumber - ${customer.getContactNo()}
+                Contact Number - ${business.getContactNo()}
             </p>
             <p>
-                Email - ${customer.getEmail()}
+                Business Category - ${business.getBusinessType()}
             </p>
             <p>
-                Address - ${customer.getAddress()}
+                Address - ${business.getAddress()}
             </p>
-            <p>
-                Date Of Birth - ${customer.getDob()}
+            <h5>About the Business</h5>
+            <p style="font-size: 11px;margin-top: 10px; text-align: justify">
+                ${business.getDescription()}
             </p>
-            <div style="margin-left: 0px" class="form-group">
-                <BUTTON style="margin-bottom: 10px" type="submit" id="updateButton" class="btn btn-primary submit-btn  px-4 py-3"
-                        value="Send Message">
-                    Update Details
-                </BUTTON>
-                <c:url value = "/customer/delete" var = "url">
-                    <c:param name = "email" value = "${customer.getEmail()}"/>
-                </c:url>
-                <a href="${url}" id="delete" class="btn btn-outline-danger submit-btn  px-4 py-3"
-                        value="Send Message">
-                    Remove Account
-                </a>
-            </div>
+            <button class="submit-btn" style="margin-left: 25%" id="updateButton">Update Details</button>
+
+
         </div>
-        <div style="width: 60%" class="col-sm">
-            <h2 style="margin-bottom: 20px">Posted Reviews</h2>
-            <c:forEach var="review" items="${reviews}">
-                <%--            <div style="border-radius: 5px; border-color: #FFFFFF; border-width: 3px; border-style: double">--%>
-                <div style="border: 2px solid #6c757d;  margin-bottom: 2%; text-align: justify">
-                    <p style="margin-bottom: 10px;margin-top: 10px; margin-left: 10px">Advertisement Id
-                        - ${review.getAdvertisementId()}</p>
-                    <p style="margin-bottom: 10px;margin-top: 10px; margin-left: 10px; margin-right: 10px"> ${review.getReview()}</p>
+        <div class="col-sm">
+            <section class="site-section" id="section-portfolio">
+                <div class="container">
+                    <div class="filters-content">
+                        <div class="row grid">
+                            <c:forEach var="advertisement" items="${advertisements}">
+                                <c:url value="/business-owners/advertisement" var="url">
+                                    <c:param name="advertisementId" value="${advertisement.getAdvertisementId()}"/>
+                                </c:url>
+                                <a href="${url}">
+                                    <div class="single-portfolio col-sm-4 all ${advertisement.getCategory()} mockup">
+                                        <div class="relative">
+                                            <div class="thumb">
+                                                <div class="overlay overlay-bg"></div>
+                                                <img class="image img-fluid" src="${advertisement.getImage()}" alt="" style="margin-top: -30%">
+                                            </div>
+                                        </div>
+                                        <div class="p-inner">
+                                            <h4>${advertisement.getTitle()}</h4>
+                                            <div class="cat">Starting from Rs.${advertisement.getStartingPrice()}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </c:forEach>
+                        </div>
+                    </div>
                 </div>
-            </c:forEach>
+            </section>
         </div>
+
     </div>
 </div>
+
+
+<!-- .section -->
+<footer class="site-footer">
+    <div class="container">
+
+        <div class="row mb-5">
+            <div class="col-md-12 text-center">
+                <p>
+                    <a href="#" class="social-item"><span class="icon-facebook2"></span></a>
+                    <a href="#" class="social-item"><span class="icon-twitter"></span></a>
+                    <a href="#" class="social-item"><span class="icon-instagram2"></span></a>
+                    <a href="#" class="social-item"><span class="icon-linkedin2"></span></a>
+                    <a href="#" class="social-item"><span class="icon-vimeo"></span></a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</footer>
 <!-- .Modal section -->
 <div class="bg-modal">
     <div class="modal-content">
         <div class="close">+</div>
         <h3> Update Account Details</h3>
-        <form action="/customer/update-profile" method="post">
-            <input type="hidden" value="${customer.getEmail()}" name="email">
+        <form action="/business-owners/update-profile" method="post">
+            <input type="hidden" value="${business.getEmail()}" name="email">
+            <label style="margin-top: 10px">Name of the Business</label><br>
+            <input class="modal-inputs" type="text" id="businessName" name="name" value="${business.getName()}"><br>
             <label style="margin-top: 10px">Contact Number</label><br>
-            <input class="modal-inputs" type="text" id="number" name="contactNo" value="${customer.getContactNo()}"><br>
+            <input class="modal-inputs" type="text" id="number" name="contactNo" value="${business.getContactNo()}"><br>
             <label style="margin-top: 10px">Address</label><br>
-            <input class="modal-inputs" type="text" id="bAddress" name="address"
-                   value="${customer.getAddress()}"><br>
-            <label style="margin-top: 10px">Password</label><br>
-            <input class="modal-inputs" type="password" id="password" name="password"
-                   value="${customer.getAddress()}"><br>
-            <input style="margin-top: 20px;" class="submit-btn" type="submit" value="Update Profile">
+            <input class="modal-inputs" type="text" id="bAddress" name="address" value="${business.getAddress()}"><br>
+            <label style="margin-top: 10px">Description</label><br>
+            <textarea class="modal-inputs" rows="7" name="description" id="description" class="modal-inputs" type="text"
+                      aria-multiline="true">
+                ${business.getDescription()}
+            </textarea>
+            <input class="submit-btn" type="submit" value="Update">
         </form>
     </div>
 
 </div>
-
-
 <script>
     document.getElementById("updateButton").addEventListener('click', function () {
         document.querySelector('.bg-modal').style.display = "flex";
@@ -190,6 +220,7 @@
         document.querySelector('.bg-modal').style.display = "none"
     });
 </script>
+
 <script src="../../js/vendor/jquery.min.js"></script>
 <script src="../../js/vendor/jquery-migrate-3.0.1.min.js"></script>
 <script src="../../js/vendor/popper.min.js"></script>

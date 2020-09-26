@@ -1,7 +1,10 @@
 package com.weddingplanner.server.services.impl;
 
+import com.weddingplanner.server.model.Advertisement;
 import com.weddingplanner.server.model.Review;
+import com.weddingplanner.server.model.crudoperations.AdvertisementRepo;
 import com.weddingplanner.server.model.crudoperations.ReviewRepo;
+import com.weddingplanner.server.services.AdvertisementService;
 import com.weddingplanner.server.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +18,20 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     ReviewRepo reviewRepo;
 
+    @Autowired
+    AdvertisementRepo advertisementRepo;
+
+    @Autowired
+    AdvertisementService advertisementService;
+
     @Override
     public void addReview(Review review) {
+        Advertisement advertisement = advertisementRepo.findById(review.getAdvertisementId()).get();
+        advertisement.setNumberOfReviews(advertisement.getNumberOfReviews() + 1);
+        Float newScore = (advertisement.getScore() + review.getScore());
         review.setReviewId(UUID.randomUUID().toString());
         reviewRepo.save(review);
+        advertisementService.updateAdvertisementRating(newScore, advertisement.getNumberOfReviews(), review.getAdvertisementId());
     }
 
     @Override

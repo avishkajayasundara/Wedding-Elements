@@ -54,21 +54,8 @@ public class UserServicesImpl implements UserService {
     }
 
     @Override
-    public void removeAdmin(String email) {
-
-    }
-    @Override
     public void removeBusinessOwner(String email) {
         businessOwnerRepo.deleteById(email);
-    }
-
-    @Override
-    public List<BusinessOwner> listUsers() {
-        return null;
-    }
-
-    @Override
-    public void disableUserAccount(String email) {
     }
 
     @Override
@@ -137,5 +124,10 @@ public class UserServicesImpl implements UserService {
     @Override
     public void updateCustomerProfile(String contactNo, String address, String password, String email) {
         customerRepo.updateProfileDetails(contactNo, address, passwordEncoder.encode(password), email);
+    }
+
+    @Override
+    public void removeCustomer(String email) {
+        customerRepo.deleteById(email);
     }
 }

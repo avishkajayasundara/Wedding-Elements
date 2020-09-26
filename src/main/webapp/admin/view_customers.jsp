@@ -28,14 +28,11 @@
     <link rel="stylesheet" type="text/css" href="../css/tableutil.css">
     <link rel="stylesheet" type="text/css" href="../css/tablemain.css">
     <!--===============================================================================================-->
+
+    <script src="https://kit.fontawesome.com/yourcode.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
     <style>
-        .box {
-            background-color: #ffffff;
-            width: 60%;
-            margin-left: 400px ;
-            padding: 50px;
-            /*margin: auto;*/
-        }
 
         .boxTop {
             width: 81%;
@@ -53,7 +50,7 @@
         h3 {
             color: #000000;
             font-weight: 400;
-            font-size: 21px;
+            font-size: 18px;
         }
 
         body {
@@ -87,7 +84,7 @@
 
         .sidebar ul a {
             display: block;
-            height: 100%;
+            /*height: 100%;*/
             width: 100%;
             line-height: 65px;
             font-size: 20px;
@@ -109,16 +106,16 @@
 
     </style>
 </head>
-<body style="background-color:#263238" >
+<body style="background-color:#263238">
 
 <div class="sidebar">
     <header>Admin Panel</header>
     <ul>
-        <li><a href="#"><i ></i>DASHBOARD</a></li>
-        <li><a href="/admin/business-owners"><i class="fab fa-sass"></i> Business Owners </a></li>
-        <li><a href="/admin/customers"><i class="fas fa-battery-full"></i> Registered Customers </a></li>
-        <li><a href="#"><i class="fas fa-bell"></i> Inquiries </a></li>
-        <li><a href="/logout"><i class="fas fa-birthday-cake"></i> Logout </a></li>
+        <li><a href="#"> DASHBOARD</a></li>
+        <li><a href="/admin/business-owners"> Business Owners </a></li>
+        <li><a href="/admin/customers"> Customers </a></li>
+        <li><a href="#"> Inquiries </a></li>
+        <li><a href="/logout"> Logout </a></li>
     </ul>
 </div>
 
@@ -130,14 +127,14 @@
     <div style="background-color: black" class="container-table100">
         <div class="wrap-table100" style="margin-top: -21%">
             <div class="table">
-                <div class="row header" style="background-color: #1A237E">
-                    <div class="cell" style="width:12%">
+                <div class="row header" style="background-color: #1A237E; font-size: 12px">
+                    <div class="cell" style="width:10%;">
                         First Name
                     </div>
                     <div class="cell">
                         Last Name
                     </div>
-                    <div class="cell">
+                    <div class="cell" style="width: 20%">
                         Email
                     </div>
                     <div class="cell">
@@ -158,8 +155,8 @@
                 </div>
 
                 <c:forEach var="customer" items="${customers}">
-                    <c:url value = "/admin/customers/" var = "url">
-                        <c:param name = "email" value = "${customer.getEmail()}"/>
+                    <c:url value="/admin/customers/" var="url">
+                        <c:param name="email" value="${customer.getEmail()}"/>
                     </c:url>
                     <div class="row" style="background-color: #E3F2FD; color: black">
                         <div style="color: black" class="cell" data-title="Full Name">
@@ -196,8 +193,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 <!--===============================================================================================-->

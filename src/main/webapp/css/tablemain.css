@@ -92,7 +92,7 @@ iframe {
 
 .limiter {
   width: 100%;
-  margin: 0 auto;
+  margin-left: 20%;
 }
 
 .container-table100 {
@@ -170,6 +170,7 @@ iframe {
 
 .cell {
   display: table-cell;
+  font-size: 12px;
 }
 
 @media screen and (max-width: 768px) {
@@ -180,7 +181,7 @@ iframe {
 
 .row .cell {
   font-family: Poppins-Regular;
-  font-size: 15px;
+  font-size: 12px;
   color: #666666;
   line-height: 1.2;
   font-weight: unset !important;
@@ -192,7 +193,7 @@ iframe {
 
 .row.header .cell {
   font-family: Poppins-Regular;
-  font-size: 18px;
+  font-size: 12px;
   color: #fff;
   line-height: 1.2;
   font-weight: unset !important;
@@ -220,7 +221,7 @@ iframe {
 
 
 .table, .row {
-  width: 100% !important;
+  width: 100%;
 }
 
 .row:hover {
@@ -256,6 +257,6 @@ iframe {
   }
 
   .table, .row, .cell {
-    width: 100% !important;
+    width: 100%;
   }
 }

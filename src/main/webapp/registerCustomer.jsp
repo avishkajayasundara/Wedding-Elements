@@ -22,9 +22,11 @@
     <link rel="stylesheet" href="css/registerstyle.css">
 </head>
 <body>
-<div class="main" id="background">
+<%--<div class="main" id="background">--%>
+<div class="main">
+    <H1 style="color: white">FUCK</H1>
     <section class="signup">
-        <div class="container">
+        <div class="container" style="margin-left: 54%; width: 45%; margin-top: -12%">
             <div class="signup-content">
                 <form action="addCustomer" method="post" id="signup-form" class="signup-form">
                     <h2 class="form-title">Create account</h2>

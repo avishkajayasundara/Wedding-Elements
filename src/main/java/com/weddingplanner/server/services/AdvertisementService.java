@@ -15,5 +15,7 @@ public interface AdvertisementService {
     List<Advertisement> searchAdvertisementsByUser(String email);
     List<Advertisement> listAdvertisements();
     List<Advertisement> listAdvertisementsByCategory(String category);
+    void updateAdvertisementRating(Float score,int noOfReviews,String advertisementId);
+    void updateAdvertisementDetails(String description, Double startingPrice, String advertisementId);
 
 }

@@ -24,8 +24,11 @@
 
 <div class="main" id="background">
 
+    <h1 style="color:white;">LOLOLOLOLOLOLOL</h1>
+
     <section class="signup">
-        <div class="container">
+        <%--        <div class="container">--%>
+        <div class="container" style="margin-left: 54%; width: 45%; margin-top: -12%">
             <div class="signup-content">
                 <form action="addBusiness" method="post" id="signup-form" class="signup-form">
                     <h2 class="form-title">Create account</h2>
@@ -35,7 +38,8 @@
                     </div>
                     <div class="form-group">
                         Description
-                        <input type="text" class="form-input" name="description" id="description" placeholder="Few Words about the business"/>
+                        <input type="text" class="form-input" name="description" id="description"
+                               placeholder="Few Words about the business"/>
                     </div>
                     <div class="form-group">
                         Email
@@ -43,7 +47,8 @@
                     </div>
                     <div class="form-group">
                         Address
-                        <input type="text" aria-multiline="true"  class="form-input" name="address" id="address" placeholder="Few Words about the business"/>
+                        <input type="text" aria-multiline="true" class="form-input" name="address" id="address"
+                               placeholder="Few Words about the business"/>
                     </div>
                     <div class="form-group">
                         Business Type<br>
@@ -72,11 +77,13 @@
                     </div>
                     Repeat Password
                     <div class="form-group">
-                        <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password"/>
+                        <input type="password" class="form-input" name="re_password" id="re_password"
+                               placeholder="Repeat your password"/>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
+                            statements in <a href="#" class="term-service">Terms of service</a></label>
                     </div>
                     <div class="form-group">
                         <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>

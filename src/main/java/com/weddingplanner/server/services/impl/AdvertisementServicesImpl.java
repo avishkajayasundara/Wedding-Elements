@@ -22,7 +22,7 @@ public class AdvertisementServicesImpl implements AdvertisementService {
     public void addAdvertisement(Advertisement advertisement) {
         advertisement.setAdvertisementId(UUID.randomUUID().toString());
         advertisement.setPublishedDate(new Date());
-//        advertisement.setBusinessOwner("aa@gmail.com");
+        advertisement.setNumberOfReviews(0);
         advertisementRepo.save(advertisement);
     }
 
@@ -74,6 +74,16 @@ public class AdvertisementServicesImpl implements AdvertisementService {
     @Override
     public List<Advertisement> listAdvertisementsByCategory(String category) {
         return null;
+    }
+
+    @Override
+    public void updateAdvertisementRating(Float score, int noOfReviews, String advertisementId) {
+        advertisementRepo.updateScore(score, noOfReviews, advertisementId);
+    }
+
+    @Override
+    public void updateAdvertisementDetails(String description, Double startingPrice, String advertisementId) {
+        advertisementRepo.updateAdvertisementDetails(description, startingPrice, advertisementId);
     }
 
 }

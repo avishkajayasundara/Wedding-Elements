@@ -21,7 +21,52 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700" rel="stylesheet">
 
-
+    <style>
+        .bg-modal{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            top: 0%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        .modal-content{
+            width: 480px;
+            height: 400px;
+            background-color: #222222;
+            opacity: 1;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-inputs{
+            width: 400px;
+            border-radius: 10px;
+            color: #FFFFFF;
+            background-color: #222222;
+        }
+        .close{
+            position: absolute;
+            top: 0%;
+            right: 14px;
+            font-size: 42px;
+            transform: rotate(45deg);
+            cursor: pointer;
+            color: #FFFFFF;
+        }
+        .submit-btn{
+            border-radius: 10px;
+            background-color: #bac964;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
 </head>
 <body data-spy="scroll" data-target="#pb-navbar" data-offset="200">
 
@@ -67,11 +112,11 @@
                         class="d-block">
                     ${advertisement.getTitle()} - ${advertisement.getScore()}/10</strong></h1>
                 <br>
-                <c:url value = "/view-business" var = "url">
-                    <c:param name = "email" value = "${advertisement.getBusinessOwner()}"/>
-                </c:url>
-                <cite class="block-47-quote-author"><a
-                        href="${url}">View Advertiser</a></cite>
+                <div style="text-align: center">
+                    <p id="updateButton" class="submit-btn">
+                        Update Advertisement Details
+                    </p>
+                </div>
             </div>
             <img class="image img-fluid" src="${advertisement.getImage()}" alt="">
         </div>
@@ -92,7 +137,6 @@
     </div>
 </section>
 
-
 <section class="site-section">
     <div class="container">
         <div class="row mb-5">
@@ -107,7 +151,7 @@
                 <div class="col-md-6">
                     <div class="block-47 d-flex mb-5">
                         <div style="text-align: center;padding-top: 10px; border-color: aqua ; background-color: #0b0b0b;height: 50px;border-radius: 50%" class="block-47-image">
-                            ${review.getScore()}/10
+                                ${review.getScore()}/10
                         </div>
                         <blockquote class="block-47-quote">
                             <p>${review.getReview()}</p>
@@ -120,45 +164,33 @@
         </div>
 </section>
 
-
-<section class="site-section" id="section-contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-5">
-                <div class="section-heading text-center">
-                    <h2 style="text-align: center">Add your <strong>Review</strong></h2>
-                </div>
-            </div>
-
-            <div class="col-md-2 mb-5 mb-md-0">
-            </div>
-            <div class="col-md-8 mb-5 mb-md-0">
-                <form action="/user/addReview" method="post" class="site-form">
-                    <input name="advertisementId" id="advertisementId" type="hidden"
-                           value="${advertisement.getAdvertisementId()}">
-                    <div class="form-group">
-                        <input style="color:#eeeeee;" name="score" id="score" type="number" max="10" min="1"
-                               class="form-control px-3 py-4"
-                               placeholder="Rate out of 10">
-                    </div>
-                    <div class="form-group mb-5">
-                        <textarea name="review" id="review" class="form-control px-3 py-4" cols="30" rows="10"
-                                  placeholder="Write your Feedback"></textarea>
-                    </div>
-                    <div style=" justify-content: center; align-items: center; display: flex; color:#eeeeee;"
-                         class="form-group">
-                        <input style="color:#eeeeee;" type="submit" class="btn btn-primary  px-4 py-3"
-                               value="Submit Review">
-                    </div>
-                </form>
-            </div>
-
-            <div class="col-md-2 mb-5 mb-md-0">
-            </div>
-        </div>
+<!-- .Modal section -->
+<div class="bg-modal">
+    <div class="modal-content">
+        <div class="close">+</div>
+        <h3> Update Account Details</h3>
+        <form action="/business-owners/update-advertisement" method="post">
+            <input type="hidden" name="advertisementId" id="advertisementId" value="${advertisement.getAdvertisementId()}">
+            <input class="modal-inputs" name="startingPrice" id="startingPrice" value="${advertisement.getStartingPrice()}">
+            <label style="margin-top: 10px">Description</label><br>
+            <textarea class="modal-inputs" id="description" name="description" >
+                ${advertisement.getDescription()}
+            </textarea><br>
+            <input style="margin-top: 20px;" class="submit-btn" type="submit" value="Update Details">
+        </form>
     </div>
-</section>
 
+</div>
+
+
+<script>
+    document.getElementById("updateButton").addEventListener('click',function () {
+        document.querySelector('.bg-modal').style.display = "flex";
+    });
+    document.querySelector('.close').addEventListener('click',function () {
+        document.querySelector('.bg-modal').style.display = "none"
+    });
+</script>
 
 <footer class="site-footer">
     <div class="container">
