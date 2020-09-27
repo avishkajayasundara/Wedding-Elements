@@ -3,17 +3,26 @@ package com.weddingplanner.server.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Inquiry {
 
     @Id
     private String inquiryId;
+    @NotBlank(message = "Name Should Not Be Blank")
     private String name;
+    @NotBlank
+    @Email
     private String email;
     private String contactNo;
+    @NotBlank
     private String subject;
-    @Column(length = 3000)
+    @Column(length = 500)
+    @Size(max=500)
     private String message;
 
     public Inquiry(String inquiryId, String name, String email, String contactNo, String subject, String message) {

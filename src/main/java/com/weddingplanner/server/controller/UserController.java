@@ -16,6 +16,8 @@ import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @RestController
 public class UserController {
 
@@ -31,12 +33,6 @@ public class UserController {
     @Autowired
     SessionRegistry sessionRegistry;
 
-    @GetMapping("/login")
-    public ModelAndView login() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("login.jsp");
-        return mv;
-    }
 
     @GetMapping("newBusiness")
     public ModelAndView newBusiness() {
@@ -55,7 +51,7 @@ public class UserController {
     }
 
     @PostMapping("addBusiness")
-    public String addBusiness(BusinessOwner businessOwner) {
+    public String addBusiness(@Valid BusinessOwner businessOwner) {
         System.out.println("Adding New Business");
         try {
             userService.addBusinessOwner(businessOwner);
@@ -68,7 +64,7 @@ public class UserController {
     }
 
     @PostMapping("addCustomer")
-    public String addCustomer(Customer customer) {
+    public String addCustomer(@Valid Customer customer) {
         System.out.println("Adding New Customer");
         try {
             userService.addCustomer(customer);
@@ -272,5 +268,11 @@ public class UserController {
             e.printStackTrace();
         }
         return new ModelAndView("redirect:/logout");
+    }
+    @GetMapping("admin")
+    public ModelAndView adminDashboard() {
+       ModelAndView modelAndView = new ModelAndView();
+       modelAndView.setViewName("/admin/dashboard.jsp");
+       return modelAndView;
     }
 }

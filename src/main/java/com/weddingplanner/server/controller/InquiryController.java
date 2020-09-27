@@ -6,7 +6,11 @@ import com.weddingplanner.server.model.Inquiry;
 import com.weddingplanner.server.services.InquiryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 public class InquiryController {
@@ -21,16 +25,33 @@ public class InquiryController {
     }
 
     @RequestMapping("newInquiry")
-    public String addInquiry(Inquiry inquiry){
-        System.out.println("New Inquiry");
+    public String addInquiry(@Valid Inquiry inquiry){
         try {
-            inquiryService.addInquiry(inquiry);
-        } catch (ServerException e) {
+            inquiryService.add(inquiry);
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+        return "redirect:/";
+    }
+    @GetMapping("admin/inquiries")
+    public ModelAndView listInquiries(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/admin/inquiries.jsp");
+        try {
+            modelAndView.addObject("inquiries", inquiryService.listInquiries());
         } catch (ClientException e) {
             e.printStackTrace();
         }
-        return "index.jsp";
+        return modelAndView;
+    }
+    @RequestMapping("admin/inquiry/delete")
+    public String addInquiry(String inquiryId){
+        try {
+            inquiryService.removeInquiry(inquiryId);
+        } catch (Exception | ServerException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/admin/inquiries";
     }
 
 }

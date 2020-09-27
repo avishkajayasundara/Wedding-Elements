@@ -2,6 +2,7 @@ package com.weddingplanner.server.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.*;
 
 @Entity
 public class Review {
@@ -10,20 +11,23 @@ public class Review {
     private String reviewId;
     private String name;
     private String email;
+    @Size(max = 1000)
+    @NotBlank(message = "This field should not be blank")
     private String review;
+
+    @Max(10)
+    @PositiveOrZero
     private int score;
     private String advertisementId;
 
     public Review(String reviewId, String name, String email, String review,
                   int score, String advertisementId) {
-
         this.reviewId = reviewId;
         this.name = name;
         this.email = email;
         this.review = review;
         this.score = score;
         this.advertisementId = advertisementId;
-
     }
 
     public Review() {

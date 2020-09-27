@@ -6,6 +6,7 @@ import com.weddingplanner.server.services.InquiryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,16 +24,38 @@ public class InquiryServiceImpl implements InquiryService {
 
     @Override
     public Inquiry getInquiry(String inquiryId) {
-        return null;
+        return inquiryRepo.findById(inquiryId).get();
     }
 
     @Override
     public List<Inquiry> listInquiries() {
-        return null;
+        List<Inquiry> result = new ArrayList<Inquiry>();
+        Iterable iterable = inquiryRepo.findAll();
+        for (Object str : iterable) {
+            result.add((Inquiry) str);
+        }
+        return result;
     }
 
     @Override
     public void removeInquiry(String id) {
+        inquiryRepo.deleteById(id);
+    }
 
+    @Override
+    public void add(Object object) {
+        Inquiry inquiry = (Inquiry) object;
+        inquiry.setInquiryId(UUID.randomUUID().toString());
+        inquiryRepo.save(inquiry);
+    }
+
+    @Override
+    public void removeById(String id) {
+        System.out.println("Implement");
+    }
+
+    @Override
+    public Object retrieveById(String id) {
+        return null;
     }
 }

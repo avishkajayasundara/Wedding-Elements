@@ -13,9 +13,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 public class ReviewController {
@@ -31,7 +34,8 @@ public class ReviewController {
 
     @PreAuthorize("hasAnyAuthority('CUSTOMER')")
     @PostMapping("user/addReview")
-    public ModelAndView addReview(ModelMap model, Review review, @AuthenticationPrincipal MyUserDetails user) {
+    public ModelAndView addReview(ModelMap model, @Valid Review review,
+                                  @AuthenticationPrincipal MyUserDetails user, Errors errors) {
         Customer customer = null;
         try {
             customer = userService.getCustomer(user.getUsername());

@@ -1,23 +1,39 @@
 package com.weddingplanner.server.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 import java.util.Date;
 
 @Entity
 public class Advertisement {
 
     @Id
+    @Email
     private String advertisementId;
+    @NotBlank(message = "The advertisement title cannot be blank")
     private String title;
     @Column(length = 500)
+    @NotNull
     private String Description;
     private String image;
+    @NotBlank(message = "Business owner field Cannot Be Blank")
     private String businessOwner;
     private Date publishedDate;
+    @NotNull
     private String category;
+    @NotBlank(message = "The starting price should have a value")
+    @Min(0)
     private Double startingPrice;
+    @Min(0)
+    @Max(10)
     private Float score;
 
     public Float getScore() {

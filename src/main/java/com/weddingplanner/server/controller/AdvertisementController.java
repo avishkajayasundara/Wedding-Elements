@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -65,7 +66,7 @@ public class AdvertisementController {
 
     @PreAuthorize("hasAnyAuthority('BUSINESS_OWNER')")
     @PostMapping("/business-owner/addAdvertisement")
-    public ModelAndView addAdvertisement(Advertisement advertisement, @AuthenticationPrincipal MyUserDetails user) {
+    public ModelAndView addAdvertisement(@Valid Advertisement advertisement, @AuthenticationPrincipal MyUserDetails user) {
         System.out.println("Adding New Advertisement");
         advertisement.setBusinessOwner(user.getUsername());
         advertisementService.addAdvertisement(advertisement);

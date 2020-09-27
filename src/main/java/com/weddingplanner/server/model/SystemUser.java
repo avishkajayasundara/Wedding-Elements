@@ -2,14 +2,22 @@ package com.weddingplanner.server.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
 public abstract class SystemUser {
     @Id
+    @Email
     private String email;
+    @Size(min = 6,message = "The password should at least be six characters long")
     private String password;
+    @NotBlank(message = "The address should not be long")
     private String address;
+    @NotBlank
     private String contactNo;
     private String userRole;
     private String status;
