@@ -2,8 +2,8 @@ package com.weddingplanner.server.services.impl;
 
 import com.weddingplanner.server.model.Advertisement;
 import com.weddingplanner.server.model.Review;
-import com.weddingplanner.server.model.crudoperations.AdvertisementRepo;
-import com.weddingplanner.server.model.crudoperations.ReviewRepo;
+import com.weddingplanner.server.services.crudoperations.AdvertisementRepo;
+import com.weddingplanner.server.services.crudoperations.ReviewRepo;
 import com.weddingplanner.server.services.AdvertisementService;
 import com.weddingplanner.server.services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;

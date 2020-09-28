@@ -1,10 +1,9 @@
 package com.weddingplanner.server.services.impl;
 
 import com.weddingplanner.server.model.Advertisement;
-import com.weddingplanner.server.model.crudoperations.AdvertisementRepo;
+import com.weddingplanner.server.services.crudoperations.AdvertisementRepo;
 import com.weddingplanner.server.services.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

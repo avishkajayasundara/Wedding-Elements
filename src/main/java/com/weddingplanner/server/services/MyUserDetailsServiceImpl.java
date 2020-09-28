@@ -2,7 +2,7 @@ package com.weddingplanner.server.services;
 
 import com.weddingplanner.server.model.MyUserDetails;
 import com.weddingplanner.server.model.SystemUser;
-import com.weddingplanner.server.model.crudoperations.SystemUserRepository;
+import com.weddingplanner.server.services.crudoperations.SystemUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

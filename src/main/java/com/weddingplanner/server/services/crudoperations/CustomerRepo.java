@@ -1,4 +1,4 @@
-package com.weddingplanner.server.model.crudoperations;
+package com.weddingplanner.server.services.crudoperations;
 
 import com.weddingplanner.server.model.Customer;
 import org.springframework.data.jpa.repository.Modifying;

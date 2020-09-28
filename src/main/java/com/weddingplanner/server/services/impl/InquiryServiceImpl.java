@@ -1,7 +1,7 @@
 package com.weddingplanner.server.services.impl;
 
 import com.weddingplanner.server.model.Inquiry;
-import com.weddingplanner.server.model.crudoperations.InquiryRepo;
+import com.weddingplanner.server.services.crudoperations.InquiryRepo;
 import com.weddingplanner.server.services.InquiryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

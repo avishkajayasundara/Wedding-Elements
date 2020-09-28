@@ -1,0 +1,456 @@
+@startuml
+
+title __WEDDING ELEMENTS's Class Diagram__\n
+
+  namespace  {
+    class MavenWrapperDownloader {
+    }
+  }
+
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      class com.weddingplanner.server.ServerApplication {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace configuration {
+        class com.weddingplanner.server.configuration.SecurityConfiguration {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace configuration {
+        class com.weddingplanner.server.configuration.WebMvcConfiguration {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace controller {
+        class com.weddingplanner.server.controller.AdvertisementController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace controller {
+        class com.weddingplanner.server.controller.GeneralController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace controller {
+        class com.weddingplanner.server.controller.InquiryController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace controller {
+        class com.weddingplanner.server.controller.ReviewController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace controller {
+        class com.weddingplanner.server.controller.UserController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace exceptions {
+        class com.weddingplanner.server.exceptions.ClientException {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace exceptions {
+        class com.weddingplanner.server.exceptions.Exception {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace exceptions {
+        class com.weddingplanner.server.exceptions.ServerException {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace interceptor {
+        class com.weddingplanner.server.interceptor.MobileRequestInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace interceptor {
+        class com.weddingplanner.server.interceptor.RegistrationInterceptor {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Admin {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Advertisement {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.BusinessOwner {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Customer {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Inquiry {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.MyUserDetails {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Review {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        abstract class com.weddingplanner.server.model.SystemUser {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        namespace crudoperations {
+          interface com.weddingplanner.server.services.crudoperations.AdminRepo {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        namespace crudoperations {
+          interface com.weddingplanner.server.services.crudoperations.AdvertisementRepo {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        namespace crudoperations {
+          interface com.weddingplanner.server.services.crudoperations.BusinessOwnerRepo {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        namespace crudoperations {
+          interface com.weddingplanner.server.services.crudoperations.CustomerRepo {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        namespace crudoperations {
+          interface com.weddingplanner.server.services.crudoperations.InquiryRepo {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        namespace crudoperations {
+          interface com.weddingplanner.server.services.crudoperations.ReviewRepo {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        namespace crudoperations {
+          interface com.weddingplanner.server.services.crudoperations.SystemUserRepository {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        interface com.weddingplanner.server.services.AdvertisementService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        interface com.weddingplanner.server.services.GeneralServices {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        interface com.weddingplanner.server.services.InquiryService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        class com.weddingplanner.server.services.MyUserDetailsServiceImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        interface com.weddingplanner.server.services.ReviewService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        interface com.weddingplanner.server.services.UserService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        namespace impl {
+          class com.weddingplanner.server.services.impl.AdvertisementServicesImpl {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        namespace impl {
+          class com.weddingplanner.server.services.impl.InquiryServiceImpl {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        namespace impl {
+          class com.weddingplanner.server.services.impl.ReviewServiceImpl {
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace services {
+        namespace impl {
+          class com.weddingplanner.server.services.impl.UserServicesImpl {
+          }
+        }
+      }
+    }
+  }
+  
+
+  com.weddingplanner.server.configuration.SecurityConfiguration -up-|> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+  com.weddingplanner.server.configuration.WebMvcConfiguration .up.|> org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+  com.weddingplanner.server.controller.AdvertisementController o-- com.weddingplanner.server.services.AdvertisementService : advertisementService
+  com.weddingplanner.server.controller.AdvertisementController o-- com.weddingplanner.server.services.ReviewService : reviewService
+  com.weddingplanner.server.controller.InquiryController o-- com.weddingplanner.server.services.InquiryService : inquiryService
+  com.weddingplanner.server.controller.ReviewController o-- com.weddingplanner.server.services.AdvertisementService : advertisementService
+  com.weddingplanner.server.controller.ReviewController o-- com.weddingplanner.server.services.ReviewService : reviewService
+  com.weddingplanner.server.controller.ReviewController o-- com.weddingplanner.server.services.UserService : userService
+  com.weddingplanner.server.controller.UserController o-- com.weddingplanner.server.services.AdvertisementService : advertisementService
+  com.weddingplanner.server.controller.UserController o-- com.weddingplanner.server.services.ReviewService : reviewService
+  com.weddingplanner.server.controller.UserController o-- com.weddingplanner.server.services.UserService : userService
+  com.weddingplanner.server.exceptions.ClientException -up-|> com.weddingplanner.server.exceptions.Exception
+  com.weddingplanner.server.exceptions.ServerException -up-|> com.weddingplanner.server.exceptions.Exception
+  com.weddingplanner.server.interceptor.MobileRequestInterceptor -up-|> org.springframework.web.servlet.handler.HandlerInterceptorAdapter
+  com.weddingplanner.server.interceptor.RegistrationInterceptor -up-|> org.springframework.web.servlet.handler.HandlerInterceptorAdapter
+  com.weddingplanner.server.interceptor.RegistrationInterceptor o-- com.weddingplanner.server.services.UserService : userService
+  com.weddingplanner.server.model.Admin -up-|> com.weddingplanner.server.model.SystemUser
+  com.weddingplanner.server.model.BusinessOwner -up-|> com.weddingplanner.server.model.SystemUser
+  com.weddingplanner.server.model.Customer -up-|> com.weddingplanner.server.model.SystemUser
+  com.weddingplanner.server.model.MyUserDetails .up.|> org.springframework.security.core.userdetails.UserDetails
+  com.weddingplanner.server.services.MyUserDetailsServiceImpl .up.|> org.springframework.security.core.userdetails.UserDetailsService
+  com.weddingplanner.server.services.MyUserDetailsServiceImpl o-- com.weddingplanner.server.services.crudoperations.SystemUserRepository : userRepository
+  com.weddingplanner.server.services.impl.AdvertisementServicesImpl .up.|> com.weddingplanner.server.services.AdvertisementService
+  com.weddingplanner.server.services.impl.AdvertisementServicesImpl o-- com.weddingplanner.server.services.crudoperations.AdvertisementRepo : advertisementRepo
+  com.weddingplanner.server.services.impl.InquiryServiceImpl .up.|> com.weddingplanner.server.services.InquiryService
+  com.weddingplanner.server.services.impl.InquiryServiceImpl o-- com.weddingplanner.server.services.crudoperations.InquiryRepo : inquiryRepo
+  com.weddingplanner.server.services.impl.ReviewServiceImpl .up.|> com.weddingplanner.server.services.ReviewService
+  com.weddingplanner.server.services.impl.ReviewServiceImpl o-- com.weddingplanner.server.services.crudoperations.AdvertisementRepo : advertisementRepo
+  com.weddingplanner.server.services.impl.ReviewServiceImpl o-- com.weddingplanner.server.services.AdvertisementService : advertisementService
+  com.weddingplanner.server.services.impl.ReviewServiceImpl o-- com.weddingplanner.server.services.crudoperations.ReviewRepo : reviewRepo
+  com.weddingplanner.server.services.impl.UserServicesImpl .up.|> com.weddingplanner.server.services.UserService
+  com.weddingplanner.server.services.impl.UserServicesImpl o-- com.weddingplanner.server.services.crudoperations.AdminRepo : adminRepo
+  com.weddingplanner.server.services.impl.UserServicesImpl o-- com.weddingplanner.server.services.crudoperations.BusinessOwnerRepo : businessOwnerRepo
+  com.weddingplanner.server.services.impl.UserServicesImpl o-- com.weddingplanner.server.services.crudoperations.CustomerRepo : customerRepo
+  com.weddingplanner.server.services.impl.UserServicesImpl o-- com.weddingplanner.server.services.crudoperations.InquiryRepo : inquiryRepo
+  com.weddingplanner.server.services.impl.UserServicesImpl o-- com.weddingplanner.server.services.crudoperations.SystemUserRepository : systemUserRepository
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

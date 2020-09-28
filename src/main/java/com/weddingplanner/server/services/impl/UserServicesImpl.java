@@ -1,17 +1,19 @@
 package com.weddingplanner.server.services.impl;
 
+import com.weddingplanner.server.exceptions.ClientException;
 import com.weddingplanner.server.model.Admin;
-import com.weddingplanner.server.model.Advertisement;
 import com.weddingplanner.server.model.BusinessOwner;
 import com.weddingplanner.server.model.Customer;
-import com.weddingplanner.server.model.crudoperations.*;
+import com.weddingplanner.server.services.crudoperations.*;
 import com.weddingplanner.server.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service("UserService")
 public class UserServicesImpl implements UserService {
@@ -70,13 +72,22 @@ public class UserServicesImpl implements UserService {
     }
 
     @Override
-    public Customer getCustomer(String email) {
-        return customerRepo.findById(email).get();
+    public Customer getCustomer(String email) throws ClientException {
+        try{
+            return customerRepo.findById(email).get();
+        }catch (NoSuchElementException e){
+            throw new ClientException(401,"Bad Request");
+        }
     }
 
     @Override
-    public BusinessOwner getBusiness(String email) {
-        return businessOwnerRepo.findById(email).get();
+    public BusinessOwner getBusiness(String email) throws ClientException {
+        try{
+            return businessOwnerRepo.findById(email).get();
+
+        }catch (Exception e){
+            throw new ClientException(401,"BadRequest");
+        }
     }
 
     @Override

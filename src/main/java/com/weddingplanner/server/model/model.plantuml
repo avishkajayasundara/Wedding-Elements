@@ -1,0 +1,264 @@
+@startuml
+
+title __MODEL's Class Diagram__\n
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Admin {
+            - dob : String
+            - employeeId : String
+            - firstName : String
+            - gender : String
+            - lastName : String
+            - nicNo : String
+            + Admin()
+            + Admin()
+            + Admin()
+            + getDob()
+            + getEmployeeId()
+            + getFirstName()
+            + getGender()
+            + getLastName()
+            + getNicNo()
+            + setDob()
+            + setEmployeeId()
+            + setFirstName()
+            + setGender()
+            + setLastName()
+            + setNicNo()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Advertisement {
+            - Description : String
+            - advertisementId : String
+            - businessOwner : String
+            - category : String
+            - image : String
+            - numberOfReviews : int
+            - publishedDate : Date
+            - score : Float
+            - startingPrice : Double
+            - title : String
+            + Advertisement()
+            + Advertisement()
+            + getAdvertisementId()
+            + getBusinessOwner()
+            + getCategory()
+            + getDescription()
+            + getImage()
+            + getNumberOfReviews()
+            + getPublishedDate()
+            + getScore()
+            + getStartingPrice()
+            + getTitle()
+            + setAdvertisementId()
+            + setBusinessOwner()
+            + setCategory()
+            + setDescription()
+            + setImage()
+            + setNumberOfReviews()
+            + setPublishedDate()
+            + setScore()
+            + setStartingPrice()
+            + setTitle()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.BusinessOwner {
+            - businessType : String
+            - country : String
+            - description : String
+            - name : String
+            + BusinessOwner()
+            + BusinessOwner()
+            + BusinessOwner()
+            + getBusinessType()
+            + getCountry()
+            + getDescription()
+            + getName()
+            + setBusinessType()
+            + setCountry()
+            + setDescription()
+            + setName()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Customer {
+            - dob : String
+            - firstName : String
+            - gender : String
+            - lastName : String
+            + Customer()
+            + Customer()
+            + Customer()
+            + getDob()
+            + getFirstName()
+            + getGender()
+            + getLastName()
+            + setDob()
+            + setFirstName()
+            + setGender()
+            + setLastName()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Inquiry {
+            - contactNo : String
+            - email : String
+            - inquiryId : String
+            - message : String
+            - name : String
+            - subject : String
+            + Inquiry()
+            + Inquiry()
+            + Inquiry()
+            + getContactNo()
+            + getEmail()
+            + getInquiryId()
+            + getMessage()
+            + getName()
+            + getSubject()
+            + setContactNo()
+            + setEmail()
+            + setInquiryId()
+            + setMessage()
+            + setName()
+            + setSubject()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.MyUserDetails {
+            - active : boolean
+            - authorities : List<GrantedAuthority>
+            - email : String
+            - password : String
+            - userRole : String
+            + MyUserDetails()
+            + MyUserDetails()
+            + getAuthorities()
+            + getEmail()
+            + getPassword()
+            + getUserRole()
+            + getUsername()
+            + isAccountNonExpired()
+            + isAccountNonLocked()
+            + isActive()
+            + isCredentialsNonExpired()
+            + isEnabled()
+            + setActive()
+            + setAuthorities()
+            + setEmail()
+            + setPassword()
+            + setUserRole()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        class com.weddingplanner.server.model.Review {
+            - advertisementId : String
+            - email : String
+            - name : String
+            - review : String
+            - reviewId : String
+            - score : int
+            + Review()
+            + Review()
+            + getAdvertisementId()
+            + getEmail()
+            + getName()
+            + getReview()
+            + getReviewId()
+            + getScore()
+            + setAdvertisementId()
+            + setEmail()
+            + setName()
+            + setReview()
+            + setReviewId()
+            + setScore()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace om.weddingplanner.server {
+      namespace model {
+        abstract class com.weddingplanner.server.model.SystemUser {
+            - address : String
+            - contactNo : String
+            - email : String
+            - password : String
+            - status : String
+            - userRole : String
+            + SystemUser()
+            + SystemUser()
+            + getAddress()
+            + getContactNo()
+            + getEmail()
+            + getPassword()
+            + getStatus()
+            + getUserRole()
+            + setAddress()
+            + setContactNo()
+            + setEmail()
+            + setPassword()
+            + setStatus()
+            + setUserRole()
+        }
+      }
+    }
+  }
+  
+
+  com.weddingplanner.server.model.Admin -up-|> com.weddingplanner.server.model.SystemUser
+  com.weddingplanner.server.model.BusinessOwner -up-|> com.weddingplanner.server.model.SystemUser
+  com.weddingplanner.server.model.Customer -up-|> com.weddingplanner.server.model.SystemUser
+  com.weddingplanner.server.model.MyUserDetails .up.|> org.springframework.security.core.userdetails.UserDetails
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
