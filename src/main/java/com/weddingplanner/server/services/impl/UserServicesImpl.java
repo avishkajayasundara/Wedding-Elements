@@ -4,6 +4,7 @@ import com.weddingplanner.server.exceptions.ClientException;
 import com.weddingplanner.server.model.Admin;
 import com.weddingplanner.server.model.BusinessOwner;
 import com.weddingplanner.server.model.Customer;
+import com.weddingplanner.server.services.JavaMailService;
 import com.weddingplanner.server.services.crudoperations.*;
 import com.weddingplanner.server.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,12 +51,14 @@ public class UserServicesImpl implements UserService {
         businessOwner.setStatus("ACTIVE");
         businessOwner.setPassword(passwordEncoder.encode(businessOwner.getPassword()));
         businessOwnerRepo.save(businessOwner);
-        System.out.println("Added New Business");
+        JavaMailService.sendMail(businessOwner.getEmail(),"Welcome to Wedding Elements","You can begin to advertise on our platform righ away\n\nThank you");
+
     }
 
     @Override
     public void removeBusinessOwner(String email) {
         businessOwnerRepo.deleteById(email);
+        JavaMailService.sendMail(email,"Hi,","You are no longer registered on Wedding Elements. We hope to see ou back \n\nThank you");
     }
 
     @Override
@@ -69,6 +72,7 @@ public class UserServicesImpl implements UserService {
         customer.setUserRole("CUSTOMER");
         customer.setStatus("ACTIVE");
         customerRepo.save(customer);
+        JavaMailService.sendMail(customer.getEmail(),"Welcome to Wedding Elements","We are glad that you registered in our system\n\nThank you");
     }
 
     @Override
@@ -113,11 +117,15 @@ public class UserServicesImpl implements UserService {
     @Override
     public void updateCustomerStatus(String status, String email) {
         customerRepo.updateCustomerStatus(status,email);
+        JavaMailService.sendMail(email,"Hi,","Your account has been temporarily disabled due to a TOS violation.Please contact Customer Support \n\nThank you");
+
     }
 
     @Override
     public void updateBusinessAccountStatus(String status,String email) {
         businessOwnerRepo.updateAccountStatus(status, email);
+        JavaMailService.sendMail(email,"Hi,","Your account has been temporarily disabled due to a TOS violation.Please contact Customer Support \n\nThank you");
+
     }
 
     @Override
@@ -133,6 +141,8 @@ public class UserServicesImpl implements UserService {
     @Override
     public void removeCustomer(String email) {
         customerRepo.deleteById(email);
+        JavaMailService.sendMail(email,"Hi,","You are no longer registered on Wedding Elements. We hope to see ou back \n\nThank you");
+
     }
 
     @Override

@@ -22,7 +22,6 @@ public class Advertisement {
     @NotBlank
     private String Description;
     private String image;
-    @NotBlank(message = "Business owner field Cannot Be Blank")
     private String businessOwner;
     private Date publishedDate;
     @NotNull

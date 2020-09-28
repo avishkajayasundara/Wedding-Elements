@@ -1,12 +1,10 @@
 package com.weddingplanner.server;
 
-import com.weddingplanner.server.model.BusinessOwner;
 import com.weddingplanner.server.model.Inquiry;
 import com.weddingplanner.server.services.crudoperations.InquiryRepo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -19,13 +17,7 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * InquiryServiceImpl Tester.
- *
- * @author <Authors name>
- * @version 1.0
- * @since <pre>Sep 29, 2020</pre>
- */
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class InquiryServiceImplTest {
@@ -86,7 +78,6 @@ public class InquiryServiceImplTest {
         entityManager.flush();
         inquiryRepo.deleteById(inquiry.getInquiryId());
         Assert.assertEquals(false, inquiryRepo.existsById(inquiry.getInquiryId()));
-
     }
 
 

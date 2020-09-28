@@ -1,6 +1,7 @@
 package com.weddingplanner.server.services.impl;
 
 import com.weddingplanner.server.model.Advertisement;
+import com.weddingplanner.server.services.JavaMailService;
 import com.weddingplanner.server.services.crudoperations.AdvertisementRepo;
 import com.weddingplanner.server.services.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class AdvertisementServicesImpl implements AdvertisementService {
         advertisement.setPublishedDate(new Date());
         advertisement.setNumberOfReviews(0);
         advertisementRepo.save(advertisement);
+        JavaMailService.sendMail(advertisement.getBusinessOwner(),"Hi,","Your advertisement is Live Now \n\nThank you");
     }
 
     @Override
