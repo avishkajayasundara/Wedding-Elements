@@ -113,7 +113,7 @@
         <li><a href="#"> DASHBOARD</a></li>
         <li><a href="/admin/business-owners"> Business Owners </a></li>
         <li><a href="/admin/customers"> Customers </a></li>
-        <li><a href="#"> Inquiries </a></li>
+        <li><a href="/admin/inquiries"> Inquiries </a></li>
         <li><a href="/logout"> Logout </a></li>
     </ul>
 </div>
@@ -166,7 +166,6 @@
                                 <c:param name="status" value="ACTIVE"/>
                                 <c:param name="email" value="${customer.getEmail()}"/>
                             </c:url>
-                            <%--            <a href="${url}">Activate Account</a>--%>
                             <div>
                                 <br>
                                 <button style="background-color: #00695C; color: #eeeeee; font-weight: 500; width: 60%"
@@ -175,6 +174,15 @@
                             </div>
                         </c:otherwise>
                     </c:choose>
+                    <c:url value="/admin/customer/delete" var="delete">
+                        <c:param name="email" value="${customer.getEmail()}"/>
+                    </c:url>
+                    <div>
+                        <br>
+                        <button style="background-color: #6b0000; color: white; font-weight: 500; width: 60%"
+                                onclick="window.location.href='${delete}'">Delete Account
+                        </button>
+                    </div>
                 </div>
                 <div class="col-sm">
                     <h2 style="color: #0b0b0b; margin-bottom: 20px">Posted Reviews</h2>

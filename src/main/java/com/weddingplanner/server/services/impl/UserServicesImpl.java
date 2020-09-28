@@ -35,19 +35,14 @@ public class UserServicesImpl implements UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public boolean validateUserRole(String expectedRole, String userId) {
-        return false;
-    }
-
-    @Override
     public void addAdminUser(Admin admin) {
-        System.out.println("Implement");
+        adminRepo.save(admin);
     }
 
     @Override
     public void addBusinessOwner(BusinessOwner businessOwner) {
         businessOwner.setUserRole("BUSINESS_OWNER");
-        businessOwner.setStatus("PENDING");
+        businessOwner.setStatus("ACTIVE");
         businessOwner.setPassword(passwordEncoder.encode(businessOwner.getPassword()));
         businessOwnerRepo.save(businessOwner);
         System.out.println("Added New Business");
@@ -61,11 +56,6 @@ public class UserServicesImpl implements UserService {
     @Override
     public BusinessOwner searchBusinessOwner(String name) {
         return null;
-    }
-
-    @Override
-    public void updateAccountDetails() {
-
     }
 
     @Override

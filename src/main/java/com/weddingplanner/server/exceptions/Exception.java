@@ -1,17 +1,17 @@
 package com.weddingplanner.server.exceptions;
 
 public class Exception extends Throwable {
-    String code;
+    int code;
     Throwable cause;
     String Message;
 
-    public Exception(String code, Throwable cause, String message) {
+    public Exception(int code, Throwable cause, String message) {
         this.code = code;
         this.cause = cause;
         Message = message;
     }
 
-    public Exception(String code, String message) {
+    public Exception(int code, String message) {
         this.code = code;
         Message = message;
     }
@@ -19,11 +19,11 @@ public class Exception extends Throwable {
     public Exception() {
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

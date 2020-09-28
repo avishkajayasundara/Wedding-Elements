@@ -62,6 +62,15 @@
         <a href="${url}">Activate Account</a>
     </c:otherwise>
 </c:choose>
+<c:url value="/admin/business/delete" var="delete">
+    <c:param name="email" value="${business.getEmail()}"/>
+</c:url>
+<div>
+    <br>
+    <button style="background-color: #6b0000; color: white; font-weight: 500; width: 60%"
+            onclick="window.location.href='${delete}'">Delete Account
+    </button>
+</div>
 <section class="site-section" id="section-portfolio">
     <div class="container">
         <div class="filters-content">

@@ -41,7 +41,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public Review getReview(String reviewId) {
-        return null;
+        return reviewRepo.findById(reviewId).get();
     }
 
     @Override
@@ -57,5 +57,26 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void deleteReview(String reviewId) {
         reviewRepo.deleteById(reviewId);
+    }
+
+    @Override
+    public void add(Object object) {
+        Review review = (Review) object;
+        Advertisement advertisement = advertisementRepo.findById(review.getAdvertisementId()).get();
+        advertisement.setNumberOfReviews(advertisement.getNumberOfReviews() + 1);
+        Float newScore = (advertisement.getScore() + review.getScore());
+        review.setReviewId(UUID.randomUUID().toString());
+        reviewRepo.save(review);
+        advertisementService.updateAdvertisementRating(newScore, advertisement.getNumberOfReviews(), review.getAdvertisementId());
+    }
+
+    @Override
+    public void removeById(String id) {
+        reviewRepo.deleteById(id);
+    }
+
+    @Override
+    public Object retrieveById(String id) {
+        return reviewRepo.findById(id).get();
     }
 }

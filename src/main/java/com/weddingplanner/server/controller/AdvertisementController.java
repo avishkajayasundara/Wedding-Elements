@@ -12,6 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -66,10 +67,15 @@ public class AdvertisementController {
 
     @PreAuthorize("hasAnyAuthority('BUSINESS_OWNER')")
     @PostMapping("/business-owner/addAdvertisement")
-    public ModelAndView addAdvertisement(@Valid Advertisement advertisement, @AuthenticationPrincipal MyUserDetails user) {
-        System.out.println("Adding New Advertisement");
+    public ModelAndView addAdvertisement(@Valid Advertisement advertisement, @AuthenticationPrincipal MyUserDetails user, Errors errors) {
+        if (errors.hasErrors()) {
+            ModelMap model = new ModelMap();
+            model.addAttribute("error", new ClientException(401, "Your Review was not added. Please Try Again"));
+            model.addAttribute("errorType", "ClientException");
+            return new ModelAndView("redirect:/error", model);
+        }
         advertisement.setBusinessOwner(user.getUsername());
-        advertisementService.addAdvertisement(advertisement);
+        advertisementService.add(advertisement);
         ModelAndView mv = new ModelAndView();
         mv.addObject("advertisement", advertisement);
         System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -82,7 +88,7 @@ public class AdvertisementController {
     public ModelAndView getAdvertisement(String advertisementId) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("advertisement.jsp");
-        Advertisement advertisement = advertisementService.getAdvertisement(advertisementId);
+        Advertisement advertisement = (Advertisement) advertisementService.retrieveById(advertisementId);
         advertisement.setScore(advertisement.getScore() / advertisement.getNumberOfReviews());
         if (SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser")
             mv.addObject("user", SecurityContextHolder.getContext().getAuthentication().getName());
@@ -90,30 +96,44 @@ public class AdvertisementController {
         try {
             mv.addObject("reviews", reviewService.listReviewByAdvertisement(advertisementId));
         } catch (ServerException e) {
-            e.printStackTrace();
+            ModelMap model = new ModelMap();
+            model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
+            model.addAttribute("errorType", "ClientException");
+            return new ModelAndView("redirect:/error", model);
         } catch (ClientException e) {
-            e.printStackTrace();
+            ModelMap model = new ModelMap();
+            model.addAttribute("error", new ClientException(401, "Bad Request. Please Try Again"));
+            model.addAttribute("errorType", "ClientException");
+            return new ModelAndView("redirect:/error", model);
         }
         return mv;
     }
+
     @GetMapping("business-owners/advertisement")
     public ModelAndView getAdvertisementToEdit(String advertisementId) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/business-owner/advertisement.jsp");
-        Advertisement advertisement = advertisementService.getAdvertisement(advertisementId);
+        Advertisement advertisement = (Advertisement) advertisementService.retrieveById(advertisementId);
         advertisement.setScore(advertisement.getScore() / advertisement.getNumberOfReviews());
         mv.addObject("advertisement", advertisement);
         try {
             mv.addObject("reviews", reviewService.listReviewByAdvertisement(advertisementId));
         } catch (ServerException e) {
-            e.printStackTrace();
+            ModelMap model = new ModelMap();
+            model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
+            model.addAttribute("errorType", "ClientException");
+            return new ModelAndView("redirect:/error", model);
         } catch (ClientException e) {
-            e.printStackTrace();
+            ModelMap model = new ModelMap();
+            model.addAttribute("error", new ClientException(401, "Bad Request. Please Try Again"));
+            model.addAttribute("errorType", "ClientException");
+            return new ModelAndView("redirect:/error", model);
         }
         return mv;
     }
+
     @PostMapping("business-owners/update-advertisement")
-    public ModelAndView  updateAdvertisement(ModelMap model, String description, Double startingPrice, String advertisementId){
+    public ModelAndView updateAdvertisement(ModelMap model, String description, Double startingPrice, String advertisementId) {
         advertisementService.updateAdvertisementDetails(description, startingPrice, advertisementId);
         model.addAttribute("advertisementId", advertisementId);
         return new ModelAndView("redirect:/business-owners/advertisement", model);

@@ -6,6 +6,8 @@ import com.weddingplanner.server.model.Inquiry;
 import com.weddingplanner.server.services.InquiryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,13 +27,19 @@ public class InquiryController {
     }
 
     @RequestMapping("newInquiry")
-    public String addInquiry(@Valid Inquiry inquiry){
+    public ModelAndView addInquiry(@Valid Inquiry inquiry, Errors errors){
+        if(errors.hasErrors()){
+            ModelMap model = new ModelMap();
+            model.addAttribute("error",new ClientException(401,"Your Review was not added. Please Try Again"));
+            model.addAttribute("errorType","ClientException");
+            return new ModelAndView("redirect:/error", model);
+        }
         try {
             inquiryService.add(inquiry);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/";
+        return new ModelAndView("redirect:/");
     }
     @GetMapping("admin/inquiries")
     public ModelAndView listInquiries(){

@@ -19,7 +19,8 @@ public class AdvertisementServicesImpl implements AdvertisementService {
     AdvertisementRepo advertisementRepo;
 
     @Override
-    public void addAdvertisement(Advertisement advertisement) {
+    public void add(Object object) {
+        Advertisement advertisement = (Advertisement) object;
         advertisement.setAdvertisementId(UUID.randomUUID().toString());
         advertisement.setPublishedDate(new Date());
         advertisement.setNumberOfReviews(0);
@@ -27,32 +28,12 @@ public class AdvertisementServicesImpl implements AdvertisementService {
     }
 
     @Override
-    public void removeAdvertisement(String advertisementId) {
+    public void removeById(String advertisementId) {
         advertisementRepo.deleteById(advertisementId);
     }
 
     @Override
-    public void updateAdvertisement(String field, String value) {
-
-    }
-
-    @Override
-    public void validateSignature(String signature) {
-
-    }
-
-    @Override
-    public void approveAdvertisement(String advertisementId) {
-
-    }
-
-    @Override
-    public void disableAdvertisement(String advertisementId) {
-
-    }
-
-    @Override
-    public Advertisement getAdvertisement(String advertisementId) {
+    public Object retrieveById(String advertisementId) {
         return advertisementRepo.findById(advertisementId).get();
     }
 
@@ -69,11 +50,6 @@ public class AdvertisementServicesImpl implements AdvertisementService {
             result.add((Advertisement) str);
         }
         return result;
-    }
-
-    @Override
-    public List<Advertisement> listAdvertisementsByCategory(String category) {
-        return null;
     }
 
     @Override

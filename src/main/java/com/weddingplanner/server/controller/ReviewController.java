@@ -36,6 +36,13 @@ public class ReviewController {
     @PostMapping("user/addReview")
     public ModelAndView addReview(ModelMap model, @Valid Review review,
                                   @AuthenticationPrincipal MyUserDetails user, Errors errors) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("error", new ClientException(401, "Your Review was not added. Please Try Again"));
+            model.addAttribute("errorType", "ClientException");
+            return new ModelAndView("redirect:/error", model);
+        }
+
         Customer customer = null;
         try {
             customer = userService.getCustomer(user.getUsername());
@@ -59,13 +66,17 @@ public class ReviewController {
 
     //@PreAuthorize("hasAnyAuthority('CUSTOMER')")
     @GetMapping("admin/delete-review")
-    public ModelAndView deleteReview(ModelMap model,String reviewId, String email) {
+    public ModelAndView deleteReview(ModelMap model, String reviewId, String email) {
         try {
             reviewService.deleteReview(reviewId);
         } catch (ServerException e) {
-            e.printStackTrace();
+            model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
+            model.addAttribute("errorType", "ClientException");
+            return new ModelAndView("redirect:/error", model);
         } catch (ClientException e) {
-            e.printStackTrace();
+            model.addAttribute("error", new ServerException(400, "Bad Request"));
+            model.addAttribute("errorType", "ClientException");
+            return new ModelAndView("redirect:/error", model);
         }
         model.addAttribute("email", email);
         return new ModelAndView("redirect:/admin/customers/", model);

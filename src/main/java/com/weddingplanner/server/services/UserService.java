@@ -9,12 +9,10 @@ import com.weddingplanner.server.model.Customer;
 import java.util.List;
 
 public interface UserService {
-    boolean validateUserRole(String expectedRole,String userId);
     void addAdminUser(Admin admin) throws ServerException, ClientException;;
     void addBusinessOwner(BusinessOwner businessOwner)throws ServerException, ClientException;;
     void removeBusinessOwner(String email);
     BusinessOwner searchBusinessOwner(String name)throws ServerException, ClientException;;
-    void updateAccountDetails() throws ServerException, ClientException;;
     void addCustomer(Customer customer)throws ServerException, ClientException;;
     Customer getCustomer(String email)throws ServerException, ClientException;;
     BusinessOwner getBusiness(String email) throws ServerException, ClientException;;

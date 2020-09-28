@@ -28,33 +28,120 @@
     <link rel="stylesheet" type="text/css" href="../css/tableutil.css">
     <link rel="stylesheet" type="text/css" href="../css/tablemain.css">
     <!--===============================================================================================-->
+    <style>
+
+        .boxTop {
+            width: 81%;
+            height: 71.5px;
+            margin-top: 0%;
+            margin-left: 252px;
+            font-size: 22px;
+            color: #eeeeee;
+            text-align: center;
+            line-height: 70px;
+            background: #202833;
+            user-select: none;
+        }
+
+        h3 {
+            color: #000000;
+            font-weight: 400;
+            font-size: 18px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background: #202833;
+            margin-top: 0%;
+        }
+
+        .sidebar header {
+            font-size: 22px;
+            color: #eeeeee;
+            text-align: center;
+            line-height: 70px;
+            background: #106466;
+            user-select: none;
+        }
+
+        .sidebar ul a {
+            display: block;
+            /*height: 100%;*/
+            width: 100%;
+            line-height: 65px;
+            font-size: 20px;
+            color: white;
+            padding-left: 40px;
+            box-sizing: border-box;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            border-bottom: 1px solid black;
+            transition: .4s;
+        }
+
+        ul li:hover a {
+            padding-left: 60px;
+        }
+
+        ul li:hover a i {
+            margin-right: 8px;
+        }
+
+    </style>
 </head>
 <body>
+<div class="sidebar">
+    <header>Admin Panel</header>
+    <ul>
+        <li><a href="#"> DASHBOARD</a></li>
+        <li><a href="/admin/business-owners"> Business Owners </a></li>
+        <li><a href="/admin/customers"> Customers </a></li>
+        <li><a href="#"> Inquiries </a></li>
+        <li><a href="/logout"> Logout </a></li>
+    </ul>
+</div>
 
-<div class="limiter">
-    <div class="container-table100">
+<div class="boxTop">
+    All Customers
+</div>
+
+<div style="background-color: #222222" class="limiter">
+    <div style="background-color: black" class="container-table100">
         <div class="wrap-table100">
             <div class="table">
-                <div class="row header">
-                    <div class="cell">
-                        Businesssssss Name
+                <div style="background-color: #1A237E; font-size: 12px" class="row header">
+                    <div class="cell" style="width: 20%;padding-right: 10px">
+                        Business Name
                     </div>
-                    <div class="cell">
+                    <div class="cell" style="width: 10%;padding-right: 10px">
                         Type
                     </div>
-                    <div class="cell">
+                    <div class="cell" style="width: 12%;padding-right: 10px">
                         Email
                     </div>
-                    <div class="cell">
+                    <div class="cell"  style="width: 10%;padding-right: 10px">
                         Location
                     </div>
-                    <div class="cell">
+                    <div class="cell" style="width: 13%;padding-right: 10px">
                         Contact Number
                     </div>
-                    <div class="cell">
+                    <div class="cell"  style="width: 10%;padding-right: 10px">
                         Status
                     </div>
-                    <div class="cell">
+                    <div class="cell"  style="width: 10%;padding-right: 10px">
                         ......
                     </div>
                 </div>

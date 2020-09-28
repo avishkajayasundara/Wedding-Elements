@@ -24,7 +24,7 @@
 <body>
 <%--<div class="main" id="background">--%>
 <div class="main">
-    <H1 style="color: white">FUCK</H1>
+    <H1 style="color: white;font-size: 60px;padding: 10%"></H1>
     <section class="signup">
         <div class="container" style="margin-left: 54%; width: 45%; margin-top: -12%">
             <div class="signup-content">

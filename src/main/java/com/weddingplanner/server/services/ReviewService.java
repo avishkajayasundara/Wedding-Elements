@@ -6,8 +6,7 @@ import com.weddingplanner.server.model.Review;
 
 import java.util.List;
 
-public interface ReviewService {
-
+public interface ReviewService extends GeneralServices {
     void addReview(Review review) throws ServerException;;
     void removeReview(String reviewId)throws ServerException, ClientException;;
     Review getReview(String reviewId) throws ServerException, ClientException;;
