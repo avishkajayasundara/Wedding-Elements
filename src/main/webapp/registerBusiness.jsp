@@ -46,6 +46,10 @@
                         <input type="email" class="form-input" name="email" id="email" placeholder="Your Email"/>
                     </div>
                     <div class="form-group">
+                        Contact Number
+                        <input type="number" minlength="10" maxlength="10" class="form-input" name="contactNo" id="contactNo" placeholder="Your Contact Number"/>
+                    </div>
+                    <div class="form-group">
                         Address
                         <input type="text" aria-multiline="true" class="form-input" name="address" id="address"
                                placeholder="Few Words about the business"/>
@@ -54,13 +58,13 @@
                         Business Type<br>
                         <select class="form-input" id="businessType" name="businessType">
                             <option value="Cakes">Cakes</option>
-                            <option value="Cards">Cards</option>
                             <option value="Food">Food</option>
                             <option value="Venues">Venues</option>
                             <option value="Dancers">Dancers</option>
                             <option value="Music">Music</option>
-                            <option value="Liquor">Liquor</option>
-                            <option value="Dancers">Dancers</option>
+                            <option value="Liquor">Photography</option>
+                            <option value="Dancers">Videography</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -72,13 +76,8 @@
                     </div>
                     Password
                     <div class="form-group">
-                        <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
+                        <input minlength="6" type="password" class="form-input" name="password" id="password" placeholder="Password"/>
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
-                    </div>
-                    Repeat Password
-                    <div class="form-group">
-                        <input type="password" class="form-input" name="re_password" id="re_password"
-                               placeholder="Repeat your password"/>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>

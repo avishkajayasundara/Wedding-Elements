@@ -4,10 +4,7 @@ import com.weddingplanner.server.model.Admin;
 import com.weddingplanner.server.model.Advertisement;
 import com.weddingplanner.server.model.BusinessOwner;
 import com.weddingplanner.server.model.Customer;
-import com.weddingplanner.server.model.crudoperations.AdminRepo;
-import com.weddingplanner.server.model.crudoperations.BusinessOwnerRepo;
-import com.weddingplanner.server.model.crudoperations.CustomerRepo;
-import com.weddingplanner.server.model.crudoperations.InquiryRepo;
+import com.weddingplanner.server.model.crudoperations.*;
 import com.weddingplanner.server.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,10 +29,16 @@ public class UserServicesImpl implements UserService {
     CustomerRepo customerRepo;
 
     @Autowired
+    SystemUserRepository systemUserRepository;
+
+    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public void addAdminUser(Admin admin) {
+        admin.setUserRole("ADMIN");
+        admin.setStatus("ACTIVE");
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
         adminRepo.save(admin);
     }
 
@@ -119,5 +122,10 @@ public class UserServicesImpl implements UserService {
     @Override
     public void removeCustomer(String email) {
         customerRepo.deleteById(email);
+    }
+
+    @Override
+    public boolean isUserRegistered(String email) {
+        return systemUserRepository.existsById(email);
     }
 }

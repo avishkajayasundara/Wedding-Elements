@@ -39,11 +39,11 @@
     <div class="notfound-bg"></div>
     <div class="notfound">
         <div class="notfound-404">
-            <h1 style="font-size: 60px">Something Went Wrong</h1>
+            <h1 style="font-size: 60px">${code}</h1>
         </div>
-        <h2>${error.getError()}</h2>
+        <h2>${message}</h2>
         <a href="/" class="home-btn">Homepage</a>
-        <a href="#" class="contact-btn">Contact us</a>
+        <a href="/" class="contact-btn">Contact us</a>
 
     </div>
 </div>

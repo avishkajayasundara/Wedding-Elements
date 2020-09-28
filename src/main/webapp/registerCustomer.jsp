@@ -64,12 +64,8 @@
                     </div>
                     Password
                     <div class="form-group">
-                        <input type="text" class="form-input" name="password" id="password" placeholder="Password" required="required"/>
+                        <input type="password" minlength="6" class="form-input" name="password" id="password" placeholder="Password" required="required"/>
                         <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
-                    </div>
-                    Repeat Password
-                    <div class="form-group">
-                        <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password" required="required"/>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"  required="required"/>

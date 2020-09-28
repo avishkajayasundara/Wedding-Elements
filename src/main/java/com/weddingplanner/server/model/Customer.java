@@ -13,7 +13,6 @@ public class Customer extends SystemUser {
     private String firstName;
     @NotBlank(message = "The last name is mandatory")
     private String lastName;
-    @Past(message = "This field should be a past date")
     private String dob;
     @NotBlank(message = "This field should not be blank")
     private String gender;

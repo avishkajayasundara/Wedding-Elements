@@ -2,6 +2,7 @@ package com.weddingplanner.server.controller;
 
 import com.weddingplanner.server.exceptions.ClientException;
 import com.weddingplanner.server.exceptions.ServerException;
+import com.weddingplanner.server.model.Admin;
 import com.weddingplanner.server.model.BusinessOwner;
 import com.weddingplanner.server.model.Customer;
 import com.weddingplanner.server.model.MyUserDetails;
@@ -58,7 +59,7 @@ public class UserController {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ClientException(401, "Registration Failed. Please Try Again"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         }
         try {
             userService.addBusinessOwner(businessOwner);
@@ -66,12 +67,12 @@ public class UserController {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         } catch (ClientException e) {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ClientException(401, "Registration Failed. Please Try Again"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         }
         return new ModelAndView("redirect:/");
     }
@@ -82,7 +83,7 @@ public class UserController {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ClientException(401, "Registration Failed. Please Try Again"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         }
         try {
             userService.addCustomer(customer);
@@ -90,20 +91,29 @@ public class UserController {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         } catch (ClientException e) {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ClientException(401, "Registration Failed. Please Try Again"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
+        }
+        catch (Exception e){
+            ModelMap model = new ModelMap();
+            model.addAttribute("error", new ClientException(500, "Registration Failed. Please Try Again"));
+            model.addAttribute("errorType", "ServerException");
+            return new ModelAndView("redirect:/errors", model);
         }
         return new ModelAndView("redirect:/");
     }
 
-    @PreAuthorize("hasAnyAuthority('CUSTOMER', 'BUSINESS_OWNER')")
+    @PreAuthorize("hasAnyAuthority('CUSTOMER', 'BUSINESS_OWNER','ADMIN')")
     @GetMapping("user")
     public ModelAndView getCustomer(@AuthenticationPrincipal MyUserDetails user) {
         ModelAndView modelAndView = new ModelAndView();
+        if(user.getUserRole().equals("ADMIN")){
+            return new ModelAndView("redirect:/admin");
+        }
         if(user.getUserRole().equals("CUSTOMER")){
             try {
                 modelAndView.addObject("customer", userService.getCustomer(user.getUsername()));
@@ -111,12 +121,12 @@ public class UserController {
                 ModelMap model = new ModelMap();
                 model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
                 model.addAttribute("errorType", "ClientException");
-                return new ModelAndView("redirect:/error", model);
+                return new ModelAndView("redirect:/errors", model);
             } catch (ClientException e) {
                 ModelMap model = new ModelMap();
                 model.addAttribute("error", new ClientException(401, "Invalid Request.Please Try Again"));
                 model.addAttribute("errorType", "ClientException");
-                return new ModelAndView("redirect:/error", model);
+                return new ModelAndView("redirect:/errors", model);
             }
             try {
                 modelAndView.addObject("reviews", reviewService.listReviewsByUser(user.getUsername()));
@@ -124,7 +134,7 @@ public class UserController {
                 ModelMap model = new ModelMap();
                 model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
                 model.addAttribute("errorType", "ClientException");
-                return new ModelAndView("redirect:/error", model);
+                return new ModelAndView("redirect:/errors", model);
             }
             modelAndView.setViewName("/user/customer.jsp");
         }else{
@@ -134,12 +144,12 @@ public class UserController {
                 ModelMap model = new ModelMap();
                 model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
                 model.addAttribute("errorType", "ClientException");
-                return new ModelAndView("redirect:/error", model);
+                return new ModelAndView("redirect:/errors", model);
             } catch (ClientException e) {
                 ModelMap model = new ModelMap();
                 model.addAttribute("error", new ClientException(401, "RInvalid Request.Please Try Again"));
                 model.addAttribute("errorType", "ClientException");
-                return new ModelAndView("redirect:/error", model);
+                return new ModelAndView("redirect:/errors", model);
             }
             modelAndView.addObject("advertisements",advertisementService.searchAdvertisementsByUser(user.getUsername()));
             modelAndView.setViewName("/business-owner/view_business.jsp");
@@ -148,7 +158,8 @@ public class UserController {
         return modelAndView;
     }
 
-    //    @PreAuthorize("hasAnyAuthority('ADMIN')")
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("admin/business-owners")
     public ModelAndView listCustomers() {
         ModelAndView modelAndView = new ModelAndView();
@@ -159,12 +170,13 @@ public class UserController {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         }
         return modelAndView;
     }
 
-    //    @PreAuthorize("hasAnyAuthority('ADMIN')")
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("admin/business-owners/")
     public ModelAndView getBusinessOwner(String email) {
         ModelAndView modelAndView = new ModelAndView();
@@ -175,17 +187,19 @@ public class UserController {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         } catch (ClientException e) {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ClientException(401, "Invalid Request.Please Try Again"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         }
         modelAndView.addObject("advertisements", advertisementService.searchAdvertisementsByUser(email));
         return modelAndView;
     }
 
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("admin/customers/")
     public ModelAndView getCustomer(String email) {
         ModelAndView modelAndView = new ModelAndView();
@@ -196,12 +210,12 @@ public class UserController {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         } catch (ClientException e) {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ClientException(401, "Invalid Request.Please Try Again"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         }
         try {
             modelAndView.addObject("reviews", reviewService.listReviewsByUser(email));
@@ -209,11 +223,12 @@ public class UserController {
             ModelMap model = new ModelMap();
             model.addAttribute("error", new ServerException(500, "Something Went Wrong"));
             model.addAttribute("errorType", "ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         }
         return modelAndView;
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("admin/customers")
     public ModelAndView getCustomers() {
         ModelAndView modelAndView = new ModelAndView();
@@ -225,6 +240,9 @@ public class UserController {
         }
         return modelAndView;
     }
+
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("admin/customers/update-status")
     public ModelAndView updateCustomerStatus(String status, String email) {
         try {
@@ -245,6 +263,8 @@ public class UserController {
         }
         return modelAndView;
     }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("admin/business-owners/update-status")
     public ModelAndView updateBusinessAccountStatus(String status, String email) {
         ModelAndView modelAndView = new ModelAndView();
@@ -326,6 +346,8 @@ public class UserController {
         }
         return new ModelAndView("redirect:/logout");
     }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("admin")
     public ModelAndView adminDashboard() {
        ModelAndView modelAndView = new ModelAndView();
@@ -337,9 +359,21 @@ public class UserController {
         userService.removeCustomer(email);
         return new ModelAndView("redirect:/admin/customers");
     }
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     @GetMapping("admin/business/delete")
     public ModelAndView adminRemoveBusiness(ModelMap model,String email) {
         userService.removeBusinessOwner(email);
+        return new ModelAndView("redirect:/admin/customers");
+    }
+    @PostMapping("newAdmin")
+    public ModelAndView addAdmin(Admin admin) {
+        try {
+            userService.addAdminUser(admin);
+        } catch (ServerException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
         return new ModelAndView("redirect:/admin/customers");
     }
 }

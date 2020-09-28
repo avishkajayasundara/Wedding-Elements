@@ -23,4 +23,5 @@ public interface UserService {
     void updateBusinessOwnerProfile(String name, String address, String contactNo, String description, String email) throws ServerException, ClientException;;
     void updateCustomerProfile(String contactNo, String address, String password, String email) throws ServerException, ClientException;;
     void removeCustomer(String email) throws ServerException, ClientException;
+    boolean isUserRegistered(String email);
 }

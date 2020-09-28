@@ -15,21 +15,20 @@ public class GeneralController {
         mv.setViewName("login.jsp");
         return mv;
     }
-    @GetMapping("/error")
-    public ModelAndView handleError(ModelMap model){
+    @GetMapping("/errors")
+    public ModelAndView handleError(ModelMap model, String errorType, Object error){
         ModelAndView modelAndView = new ModelAndView();
         try{
            if(model.equals(null)){
                modelAndView.addObject("code",500);
                modelAndView.addObject("message","Something Went Wrong");
            }else{
-               String errorType = (String)model.getAttribute("errorType");
                if(errorType.equals("ClientException")){
-                   ClientException exception = (ClientException) model.getAttribute("error");
+                   ClientException exception = (ClientException) error;
                    modelAndView.addObject("code",exception.getCode());
                    modelAndView.addObject("message",exception.getMessage());
                }else{
-                   ServerException exception = (ServerException) model.getAttribute("error");
+                   ServerException exception = (ServerException) error;
                    modelAndView.addObject("code",exception.getCode());
                    modelAndView.addObject("message",exception.getMessage());
                }
@@ -38,7 +37,8 @@ public class GeneralController {
        }catch (Exception e){
            modelAndView.addObject("code",500);
            modelAndView.addObject("message","Something Went Wrong");
-            return modelAndView;
+           modelAndView.setViewName("error.jsp");
+           return modelAndView;
         }
         return modelAndView;
     }

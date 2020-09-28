@@ -32,7 +32,7 @@ public class InquiryController {
             ModelMap model = new ModelMap();
             model.addAttribute("error",new ClientException(401,"Your Review was not added. Please Try Again"));
             model.addAttribute("errorType","ClientException");
-            return new ModelAndView("redirect:/error", model);
+            return new ModelAndView("redirect:/errors", model);
         }
         try {
             inquiryService.add(inquiry);
