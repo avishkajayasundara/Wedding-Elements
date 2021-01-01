@@ -1,10 +1,7 @@
 package com.weddingplanner.server.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
 
 @Entity
 public class Customer extends SystemUser {
@@ -16,6 +13,7 @@ public class Customer extends SystemUser {
     private String dob;
     @NotBlank(message = "This field should not be blank")
     private String gender;
+
 
     public Customer(String email, String password, String address, String contactNo, String userRole, String status, String firstName, String lastName, String dob, String gender) {
         super(email, password, address, contactNo, userRole, status);

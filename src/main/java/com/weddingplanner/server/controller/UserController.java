@@ -177,7 +177,7 @@ public class UserController {
 
 
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    @GetMapping("admin/business-owners/")
+    @GetMapping("admin/ -owners/")
     public ModelAndView getBusinessOwner(String email) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/admin/business-owners/view_business.jsp");

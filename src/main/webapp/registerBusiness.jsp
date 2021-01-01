@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title></title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -24,14 +24,14 @@
 
 <div class="main" id="background">
 
-    <h1 style="color:white;">LOLOLOLOLOLOLOL</h1>
+    <h1 style="color:white;"></h1>
 
     <section class="signup">
         <%--        <div class="container">--%>
         <div class="container" style="margin-left: 54%; width: 45%; margin-top: -12%">
             <div class="signup-content">
                 <form action="addBusiness" method="post" id="signup-form" class="signup-form">
-                    <h2 class="form-title">Create account</h2>
+                    <h2 class="form-title">Register Your Business</h2>
                     <div class="form-group">
                         Name Of Business
                         <input type="text" class="form-input" name="name" id="name" placeholder="Name"/>

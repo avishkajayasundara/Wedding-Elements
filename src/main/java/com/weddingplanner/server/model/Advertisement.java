@@ -20,7 +20,7 @@ public class Advertisement {
     private String title;
     @Column(length = 500)
     @NotBlank
-    private String Description;
+    private String description;
     private String image;
     private String businessOwner;
     private Date publishedDate;
@@ -54,7 +54,7 @@ public class Advertisement {
                          Date publishedDate, String category, Double startingPrice,int numberOfReviews, Float score ) {
         this.advertisementId = advertisementId;
         this.title = title;
-        Description = description;
+        this.description = description;
         this.image = image;
         this.businessOwner = businessOwner;
         this.publishedDate = publishedDate;
@@ -84,11 +84,11 @@ public class Advertisement {
     }
 
     public String getDescription() {
-        return Description;
+        return this.description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getImage() {

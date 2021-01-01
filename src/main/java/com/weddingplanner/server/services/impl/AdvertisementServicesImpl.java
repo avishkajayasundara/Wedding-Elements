@@ -24,6 +24,7 @@ public class AdvertisementServicesImpl implements AdvertisementService {
         advertisement.setAdvertisementId(UUID.randomUUID().toString());
         advertisement.setPublishedDate(new Date());
         advertisement.setNumberOfReviews(0);
+        advertisement.setScore((float) 0);
         advertisementRepo.save(advertisement);
         JavaMailService.sendMail(advertisement.getBusinessOwner(),"Hi,","Your advertisement is Live Now \n\nThank you");
     }

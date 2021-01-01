@@ -17,6 +17,6 @@ public interface AdvertisementRepo extends CrudRepository<Advertisement,String> 
     void updateScore(Float score, int noOfReviews, String advertisementId);
 
     @Modifying
-    @Query("update Advertisement advertisement set advertisement.Description = ?1, advertisement.startingPrice = ?2 where advertisement.advertisementId = ?3")
+    @Query("update Advertisement advertisement set advertisement.description = ?1, advertisement.startingPrice = ?2 where advertisement.advertisementId = ?3")
     void updateAdvertisementDetails(String description, Double startingPrice, String advertisementId);
 }
